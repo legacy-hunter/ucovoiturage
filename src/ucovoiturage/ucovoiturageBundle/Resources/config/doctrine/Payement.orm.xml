@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ucovoiturage\ucovoiturageBundle\Entity\Payement" table="payement">
+    <indexes>
+      <index name="id_pers" columns="id_pers"/>
+      <index name="id_annonce" columns="id_annonce"/>
+    </indexes>
+    <id name="idPayement" type="integer" column="id_payement">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="compte" type="integer" column="compte" nullable="true"/>
+    <field name="datePayement" type="date" column="date_payement" nullable="true"/>
+    <field name="montant" type="integer" column="montant" nullable="true"/>
+    <many-to-one field="idAnnonce" target-entity="Annonce">
+      <join-columns>
+        <join-column name="id_annonce" referenced-column-name="id_annonce"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idPers" target-entity="Personne">
+      <join-columns>
+        <join-column name="id_pers" referenced-column-name="cin"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

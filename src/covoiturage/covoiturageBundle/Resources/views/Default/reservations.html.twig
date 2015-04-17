@@ -1,0 +1,18 @@
+{# empty Twig template #}
+{% for flashMessage in app.session.flashbag.get('success') %}
+                <div class="alert alert-success">
+                    {{ flashMessage }}
+                </div>
+            {% endfor %}
+            <h3>Demandes reçues </h3>
+{% for demandes in demandes_rec %}
+     {{demandes.utilisateurSend.nom}} &nbsp; {{demandes.utilisateurSend.prenom}} 
+     vous a envoyé une réservation pour votre annonce du : {{demandes.annonce.DateDepart|date('Y-m-d')}} <a href='{{path('confirmer_res', { 'id' : demandes.id })}}'>confirmer</a> <a href='{{path('annuler_res', { 'id' : demandes.id })}}'>annuler</a>
+{% endfor %}
+<h3>Demandes envoyees : </h3>
+{% for demandes in demandes_env %}
+     {{demandes.utilisateurSend.nom}} &nbsp; {{demandes.utilisateurSend.prenom}} 
+     vous a envoyé une réservation pour votre annonce du : {{demandes.annonce.DateDepart|date('Y-m-d')}} <a href='{{path('confirmer_res', { 'id' : demandes.id })}}'>confirmer</a> <a href='{{path('annuler_res', { 'id' : demandes.id })}}'>annuler</a>
+     
+     {{demandes.etat}}
+{% endfor %}

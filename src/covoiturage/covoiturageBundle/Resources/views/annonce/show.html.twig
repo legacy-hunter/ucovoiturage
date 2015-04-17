@@ -1,0 +1,52 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>annonce</h1>
+
+    <table class="record_properties">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ entity.id }}</td>
+            </tr>
+            <tr>
+                <th>Lieudepart</th>
+                <td>{{ entity.lieuDepart }}</td>
+            </tr>
+            <tr>
+                <th>Lieuarrive</th>
+                <td>{{ entity.lieuArrive }}</td>
+            </tr>
+            <tr>
+                <th>Datedepart</th>
+                <td>{{ entity.dateDepart|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th>Nbplace</th>
+                <td>{{ entity.nbPlace }}</td>
+            </tr>
+            <tr>
+                <th>Prix</th>
+                <td>{{ entity.prix }}</td>
+            </tr>
+            <tr>
+                <th>Precisions</th>
+                <td>{{ entity.precisions }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('gestion_annonce') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('gestion_annonce_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>{{ form(delete_form) }}</li>
+</ul>
+{% endblock %}

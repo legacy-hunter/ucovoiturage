@@ -1,0 +1,17 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>etape creation</h1>
+
+{{ form_label(form.annonce) }}{{form_widget(form.annonce,{'attr':{'value':'{{id}}'}})}} {{ form_errors(form.annonce) }}
+{{ form_label(form.ville) }}{{ form_widget(form.ville) }}{{ form_errors(form.ville) }}
+{{ form_label(form.prix) }}{{ form_widget(form.prix) }}{{ form_errors(form.prix) }}
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('gestion_etape') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+{% endblock %}

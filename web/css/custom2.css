@@ -1,0 +1,172 @@
+#custom-bootstrap-menu.navbar-default .navbar-brand {
+    color: rgba(228, 240, 231, 1);
+}
+#custom-bootstrap-menu.navbar-default {
+    font-size: 15px;
+    background-color: rgba(3, 214, 105, 1);
+    border-width: 1px;
+    border-radius: 4px;
+}
+#custom-bootstrap-menu.navbar-default .navbar-nav>li>a {
+    color: rgba(230, 250, 236, 1);
+    background-color: rgba(3, 214, 105, 1);
+}
+#custom-bootstrap-menu.navbar-default .navbar-nav>li>a:hover,
+#custom-bootstrap-menu.navbar-default .navbar-nav>li>a:focus {
+    color: rgba(245, 245, 245, 1);
+    background-color: rgba(41, 173, 107, 1);
+}
+#custom-bootstrap-menu.navbar-default .navbar-nav>.active>a,
+#custom-bootstrap-menu.navbar-default .navbar-nav>.active>a:hover,
+#custom-bootstrap-menu.navbar-default .navbar-nav>.active>a:focus {
+    color: rgba(171, 245, 190, 1);
+    background-color: rgba(3, 173, 85, 1);
+}
+#custom-bootstrap-menu.navbar-default .navbar-toggle {
+    border-color: #03ad55;
+}
+#custom-bootstrap-menu.navbar-default .navbar-toggle:hover,
+#custom-bootstrap-menu.navbar-default .navbar-toggle:focus {
+    background-color: #03ad55;
+}
+#custom-bootstrap-menu.navbar-default .navbar-toggle .icon-bar {
+    background-color: #03ad55;
+}
+#custom-bootstrap-menu.navbar-default .navbar-toggle:hover .icon-bar,
+#custom-bootstrap-menu.navbar-default .navbar-toggle:focus .icon-bar {
+    background-color: #03d669;
+}
+
+
+article
+{
+    background-color: #03ad66;
+    display: block
+
+}
+article p
+{
+    font-size: 0.8em;
+}
+
+aside
+{
+    position: relative;
+    width: 235px;
+    background-color: #FFFFFF;
+    box-shadow: 0px 2px 5px #1c1a19;
+    border-radius: 5px;
+    padding: 10px;
+    color: green;
+    font-size: 0.9em;
+    display: block;
+}
+
+
+
+section{ 
+    background-color: #03ad00;
+    display: block; 
+
+}
+#page{
+    background-color: #03ad55;
+    font-style: italic;
+    display: block ;
+}
+.nav > li > a:focus, .nav > li > a:hover {
+    text-decoration: none;
+    text-decoration-color: -moz-use-text-color;
+    text-decoration-line: none;
+    text-decoration-style: solid;
+    background-color: #03d669;
+}
+
+@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
+h1, h2, h3, h4 {
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+}
+p {
+    font-family: 'Lato', sans-serif;
+}
+html {
+    background-color: #474747;
+}
+.top {
+    background-color: #474747;
+}
+.top .navbar-brand {
+    height: 50px;
+    line-height: 50px;
+    text-align: center;
+    padding: 0 10px;
+    background-color: #CCC;
+    color: #474747;
+    text-decoration: none;
+}
+.top .container2 {
+    padding: 0;
+}
+.banner {
+    background-color: #373737;
+}
+.banner .container2 {
+    background-color: #009b9b;
+    min-height: 200px;
+    padding: 40px 30px 30px 40px;
+}
+.banner .container2 p {
+    font-size: 22px;
+    padding-left: 5px;
+    font-weight: 300;
+}
+.middle {
+    background-color: #CCC;
+}
+.middle .container2 {
+    background-color: #FFF;
+    min-height: 300px;
+    padding-bottom: 20px;
+}
+.navbar-nav li a {
+    color: #CCC;
+    font-family: 'Lato', sans-serif;
+}
+.navbar-nav li a:hover {
+    background-color: #BDF4C4;
+}
+.bottom {
+    background-color: #58F46E;
+}
+.bottom .container2 {
+    background-color: #BDF4C4;
+    min-height: 150px;
+}
+.bottom .container2 h3 {
+    color: #999;
+}
+.bottom .container2 p {
+    color: #666;
+}
+.navbar-toggle {
+    color: #009b9b;
+    font-size: 32px;
+    margin: 3px;
+    padding: 2px 5px;
+    line-height: 32px;
+}
+.navbar-toggle:hover {
+    background-color: #373737;
+}
+.navbar-nav {
+    margin: 0;
+}
+
+.content2 p {
+    line-height: 30px;
+    font-size: 16px;
+}
+.to-tutorial {
+    text-align: center;
+}

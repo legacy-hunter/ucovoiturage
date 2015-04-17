@@ -1,0 +1,12 @@
+ucovoiturage_homepage:
+    path:     /
+    defaults: { _controller: ucovoiturageBundle:Default:index }
+
+ucovoiturage_inscription:
+    path:     inscription
+    defaults: { _controller: ucovoiturageBundle:Inscription:Inscription }
+
+ucovoiturage_validation:
+    path:     /validation
+    defaults: { _controller: ucovoiturageBundle:Inscription:TraitInscrip }
+

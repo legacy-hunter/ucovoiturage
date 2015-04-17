@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ucovoiturage\ucovoiturageBundle\Entity\Personne" table="personne">
+    <unique-constraints>
+      <unique-constraint name="cin" columns="cin"/>
+      <unique-constraint name="username" columns="username"/>
+      <unique-constraint name="email" columns="email"/>
+      <unique-constraint name="matricule" columns="matricule"/>
+      <unique-constraint name="compte" columns="compte"/>
+    </unique-constraints>
+    <id name="cin" type="integer" column="cin">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="nom" type="string" column="nom" length="30" nullable="false"/>
+    <field name="prenom" type="string" column="prenom" length="30" nullable="false"/>
+    <field name="sexe" type="string" column="sexe" length="1" nullable="false"/>
+    <field name="contact" type="integer" column="contact" nullable="false"/>
+    <field name="username" type="string" column="username" length="30" nullable="false"/>
+    <field name="password" type="string" column="password" length="10" nullable="false"/>
+    <field name="email" type="string" column="email" length="50" nullable="false"/>
+    <field name="datenaissance" type="date" column="dateNaissance" nullable="false"/>
+    <field name="matricule" type="integer" column="matricule" nullable="false"/>
+    <field name="role" type="string" column="role" length="15" nullable="false"/>
+    <field name="ville" type="string" column="ville" length="15" nullable="false"/>
+    <field name="compte" type="integer" column="compte" nullable="false"/>
+    <field name="numPermis" type="integer" column="num_permis" nullable="false"/>
+  </entity>
+</doctrine-mapping>

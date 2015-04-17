@@ -1,0 +1,30 @@
+gestion_etape:
+    path:     /
+    defaults: { _controller: "covoiturageBundle:etape:index" }
+
+gestion_etape_show:
+    path:     /{id}/show
+    defaults: { _controller: "covoiturageBundle:etape:show" }
+
+gestion_etape_new:
+    path:     /new/{id}
+    defaults: { _controller: "covoiturageBundle:etape:new" }
+
+gestion_etape_create:
+    path:     /create
+    defaults: { _controller: "covoiturageBundle:etape:create" }
+    methods:  POST
+
+gestion_etape_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "covoiturageBundle:etape:edit" }
+
+gestion_etape_update:
+    path:     /{id}/update
+    defaults: { _controller: "covoiturageBundle:etape:update" }
+    methods:  [POST, PUT]
+
+gestion_etape_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "covoiturageBundle:etape:delete" }
+    methods:  [POST, DELETE]

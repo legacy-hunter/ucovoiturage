@@ -1,0 +1,16 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block fos_user_content %}
+    <div id="container">
+        <h3>Bienvenue sur votre profil</h3>
+        <br><br>
+        <div class="row">
+            {% include '::menu_profil.html.twig'%}
+            <div class=" col-lg-8">   
+                <p> <h4>Vos Informations :</h4></p>
+                 
+                {% include "FOSUserBundle:Profile:show_content.html.twig" %} 
+            </div>
+        </div>
+    </div>
+{% endblock fos_user_content %}

@@ -1,0 +1,35 @@
+{# empty Twig template #}
+
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+<h4>Details de l'opération</h4>
+<p>Article publié par {{user.nom}} {{user.prenom}}</p> <br>
+<p>Date de l'opération : {{annonce.dateDepart | date('Y-m-d')}}</p><br>
+<p>Prix de l'opération :  {{annonce.prix}}</p><br>
+Quelques précisons de l'auteur : <br>
+<p>{{annonce.precisions}}</p>
+<form action ="{{path('envoi_res',{'id' : annonce.id })}}" method="POST">
+    <label for="comment">Commentaire : </label><br>
+    <textarea id="comment" name="comment"></textarea><br>
+    <input type='submit' value='Effectuer reservation'/>
+</form>
+    <br>Envoyer un message ...<br>
+<form action='{{path('send_message',{ 'id' : annonce.id })}}' method='POST' class="form-group">
+    <label for='sender'>Votre email : </label><br>
+        <input type='text' id='sender_mail' name='sender_mail'/><br>
+        <label for='objet'>objet : </label><br>
+        <input type='text' id='object' name='objet'><br>
+        <label for='message'>Votre message : </label><br>
+        <textarea id='message' rows='8' cols='45' name="message"></textarea><br>
+        <input type='submit' value='Envoyer message'/>
+</form>
+
+            {% for flashMessage in app.session.flashbag.get('success') %}
+                <div class="alert alert-success">
+                    {{ flashMessage }}
+                </div>
+            {% endfor %}
+
+{% endblock %}

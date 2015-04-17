@@ -1,0 +1,18 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_driver: pdo_mysql
+    database_host: 127.0.0.1
+    database_port: null
+    database_name: ucovoiturage
+    database_user: root
+    database_password: legacy
+    mailer_transport: smtp
+    mailer_host: smtp.gmail.com
+    mailer_user: kayewa89@gmail.com
+    mailer_password: overload@Hunter1989
+    mailer_encryption: ssl
+    locale: fr
+    secret: ThisTokenIsNotSoSecretChangeIt
+    debug_toolbar: true
+    debug_redirects: false
+    use_assetic_controller: true

@@ -1,0 +1,26 @@
+{# empty Twig template #}
+
+{% extends '::base.html.twig' %}
+
+{% block body %}
+
+<h4><h4>
+ <table>   
+     <tbody>
+         
+{% for annonce in annonces %}
+    {% if( annonce.dateDepart|date('Y-m-d') >= 'now'|date('Y-m-d') ) and (annonce.nbPlace != 0)%}
+    <tr>
+        
+        <td>Lieu de depart : &nbsp;{{ annonce.lieuDepart}} &nbsp;</td>
+        <td> Lieu d'arrivé : &nbsp;{{ annonce.lieuArrive}} &nbsp;</td>
+        <td>Nombres de places : &nbsp;{{ annonce.nbPlace}} &nbsp;</td>
+        <td>Prix :&nbsp; {{annonce.prix}} &nbsp;</td>
+        <td>date : &nbsp;{{annonce.dateDepart|date('Y-m-d H:i:s')}} &nbsp;<td>
+        <td><a href="{{ path('details_annonce', { 'id' : annonce.id })}}"> > Lire l'annonce</a>
+    </tr>
+    {% endif %}
+{% endfor %}
+     </tbody>
+   </table>
+    {% endblock %}

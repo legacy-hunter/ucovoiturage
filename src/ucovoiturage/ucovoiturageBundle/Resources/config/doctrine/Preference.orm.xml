@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ucovoiturage\ucovoiturageBundle\Entity\Preference" table="preference">
+    <indexes>
+      <index name="id_pers" columns="id_pers"/>
+    </indexes>
+    <id name="idPreference" type="integer" column="id_preference">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="preferences" type="string" column="preferences" length="100" nullable="true"/>
+    <many-to-one field="idPers" target-entity="Personne">
+      <join-columns>
+        <join-column name="id_pers" referenced-column-name="cin"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

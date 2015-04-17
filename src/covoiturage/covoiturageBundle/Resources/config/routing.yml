@@ -1,0 +1,72 @@
+covoiturage_gestion_etape:
+    resource: "@covoiturageBundle/Resources/config/routing/etape.yml"
+    prefix:   /gestion_etape
+
+covoiturage_gestion_annonce:
+    resource: "@covoiturageBundle/Resources/config/routing/annonce.yml"
+    prefix:   /gestion_annonce
+
+covoiturage_homepage:
+    path:     /
+    defaults: { _controller: FOSUserBundle:Security:login }
+
+covoiturage_test:
+    path:     /test
+    defaults: { _controller: covoiturageBundle:Default:index }
+    
+covoiturage_fos:
+    path:     /testttt
+    defaults: { _controller: FOSUserBundle:Profile:edit}
+    
+covoiturage_annonce:
+    path: /creerAnnonce
+    defaults:  { _controller: covoiturageBundle:Annonce:annonceFormulaire}
+    
+traiter_form_annonce:
+     path: /trait_annonce
+     defaults:  { _controller: covoiturageBundle:Annonce:traiter_annonce}
+
+liste_annonce:
+     path: /liste_annonce
+     defaults:  { _controller: covoiturageBundle:Annonce:listeAnnonce}
+
+supprimer_annonce:
+     path: /del_annonce/{id}
+     defaults:  { _controller: covoiturageBundle:Annonce:suppAnnonce}
+
+form_etape:
+     path: /affich_etape/{id}
+     defaults:  { _controller: covoiturageBundle:Default:etape}
+     
+traitement_etape:
+    path: /trait_etape
+    defaults:  { _controller: covoiturageBundle:Default:traitEtape}
+liste_covoiturages:
+     path: /liste_covoiturages
+     defaults:  { _controller: covoiturageBundle:Annonce:listeCovoiturages}
+modif_profil:
+    path: /modif_profil
+    defaults:  { _controller: covoiturageBundle:Annonce:modifierProfil}
+
+valider_modif_profil:
+    path: /valider_modif_profil
+    defaults:  { _controller: covoiturageBundle:Annonce:valider_modif_profil}
+    
+details_annonce:
+    path: details_annonce/{id}
+    defaults:  { _controller: covoiturageBundle:Annonce:detailsAnnonce} 
+send_message:
+    path: sending/{id}
+    defaults:  { _controller: covoiturageBundle:Annonce:sendMessage}
+envoi_res:
+    path: envoi_res/{id}
+    defaults:  { _controller: covoiturageBundle:Annonce:envoi_res}
+voir_res:
+    path: /voir_reservations
+    defaults:  { _controller: covoiturageBundle:Annonce:voir_res}
+confirmer_res:
+    path: /confirmation/{id}
+    defaults:  { _controller: covoiturageBundle:Annonce:confirmer_res}
+annuler_res:
+    path: /annulation/{id}
+    defaults:  { _controller: covoiturageBundle:Annonce:annuler_res}

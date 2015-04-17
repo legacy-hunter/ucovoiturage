@@ -1,0 +1,352 @@
+{# empty Twig template #}
+<html>
+    <head>      
+        
+       <link href="{{asset('bundles/ucovoiturage/css/bootstrap.css')}}" rel="stylesheet" media="screen"/>
+        <!-- BOOTSTRAP CORE STYLE CSS -->
+        <link href="{{asset('bundles/ucovoiturage/css/bootstrap.min.css')}}" rel="stylesheet" media="screen"/>
+        <!-- FONTAWESOME STYLE CSS -->
+        <!-- CUSTOM STYLE CSS -->
+        <link href="{{asset('bundles/ucovoiturage/css/style.css')}}" />    
+        <link href="{{asset('bundles/ucovoiturage/css/bootstrap-datetimepicker.min.css')}}" rel="stylesheet" media="screen"/>   
+        <!-- GOOGLE FONT -->
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+        
+    </head>
+    <body>
+
+        <div class="container">
+
+            
+             <form action="" class="form-horizontal"  role="form">
+        <fieldset>
+            <legend>Test</legend>
+            <div class="form-group">
+                <label for="dtp_input1" class="col-md-2 control-label">DateTime Picking</label>
+                <div class="input-group date form_datetime col-md-5" data-date="1979-09-16T05:25:07Z" data-date-format="dd MM yyyy - HH:ii p" data-link-field="dtp_input1">
+                    <input class="form-control" size="16" type="text" value="" readonly>
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+					<span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                </div>
+				<input type="hidden" id="dtp_input1" value="" /><br/>
+            </div>
+			<div class="form-group">
+                <label for="dtp_input2" class="col-md-2 control-label">Date Picking</label>
+                <div class="input-group date form_date col-md-5" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                    <input class="form-control" size="16" type="text" value="" readonly>
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+					<span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                </div>
+				<input type="hidden" id="dtp_input2" value="" /><br/>
+            </div>
+			<div class="form-group">
+                <label for="dtp_input3" class="col-md-2 control-label">Time Picking</label>
+                <div class="input-group date form_time col-md-5" data-date="" data-date-format="hh:ii" data-link-field="dtp_input3" data-link-format="hh:ii">
+                    <input class="form-control" size="16" type="text" value="" readonly>
+                    <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+					<span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
+                </div>
+				<input type="hidden" id="dtp_input3" value="" /><br/>
+            </div>
+        </fieldset>
+    </form>
+            
+            
+            
+            
+            
+            <div class="container">
+      <div class="row">
+          <form role="form" action="{{path('ucovoiturage_validation')}}" method="POST">
+            <div class="col-lg-6">
+                <div class="well well-sm"><strong><span class="glyphicon glyphicon-asterisk"></span>Required Field</strong></div>
+                <div class="form-group">
+                    <label for="cin">Entrez Votre cin : </label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="cin" id="cin" placeholder="Votre numero Cin" >
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="nom">Entrer Votre nom : </label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="nom" name="nom" placeholder="Votre Nom" >
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="prenom">Entrer votre prénom : </label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="prenom" name="prenom" placeholder="Votre Prenom" >
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="user">Utilisateur : </label>
+                     <div class="input-group">
+                        <input type="text" class="form-control" id="user" name="user" placeholder="Votre nom d'utilisateur">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="InputMessage">Mot de passe : </label>
+                     <div class="input-group">
+                        <input type="text" class="form-control" id="password" name="password" placeholder="Votre mot clé" >
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="sexe">Sexe : </label>
+                     <div class="checkbox">
+                        <label><input type="checkbox" name="sexe" id="sexe">Feminin</label>
+                    </div>
+                     <div class="checkbox">
+                        <label><input type="checkbox" name="sexe" id="sexe">Masculin</label>
+                    </div>
+                </div>
+                
+                    <label for="date">Date de Naissance: </label>
+                    
+                       <input class="datepicker" data-date-format="yyyy-mm-dd" name="date" id="date">
+                  
+              
+                <div class="form-group has-error">
+                    <label for="matricule">Matricule : </label>
+                     <div class="input-group">
+                        <input type="text" class="form-control" id="matricule" name="matricule" placeholder="Votre Matricule ULT" >
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="InputMessage">Numero de permis </label>
+                     <div class="input-group">
+                        <input type="text" class="form-control" id="permis" name="permis" placeholder="numero de permis" >
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="compte">Compte : </label>
+                     <div class="input-group">
+                        <input type="text" class="form-control" id="compte" name="compte" placeholder="Votre Numero de compte">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                    </div>
+                </div>
+               <div class="form-group">
+                    <label for="ville">Ville : </label>
+                     <div class="input-group">
+                        <input type="text" class="form-control" id="ville" name="ville" placeholder="Quartier à Tunis" >
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="contact">Contact : </label>
+                     <div class="input-group">
+                        <input type="text" class="form-control" id="contact" name="contact" placeholder="Votre contact" >
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="eamil"> E-mail: </label>
+                     <div class="input-group">
+                        <input type="email" class="form-control" id="email" name="eamil" placeholder="Votre Email" >
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                    </div>
+                </div>
+                <input type="submit" name="submit" id="submit" value="valider" class="btn btn-info pull-right">
+            </div>
+        </form>
+        <div class="col-lg-5 col-md-push-1">
+            <div class="col-md-12">
+                <div class="alert alert-success">
+                    <strong><span class="glyphicon glyphicon-ok"></span> Success! Message envoyé.</strong>
+                </div>
+                <div class="alert alert-danger">
+                    <span class="glyphicon glyphicon-remove"></span><strong> Erreur! Revoyez toutes les entrées.</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+        </div>
+
+
+        <script src="{{asset('bundles/ucovoiturage/plugins/jquery-1.8.3.min.js')}}"></script>
+        <!-- BOOTSTRAP SCRIPTS  -->
+        <script src="{{asset('bundles/ucovoiturage/plugins/bootstrap.js')}}" charset="UTF-8"></script>
+        <script src="{{asset('bundles/ucovoiturage/js/bootstrap.min.js')}}" charset="UTF-8"></script>
+        <script src="{{ asset('bundles/ucovoiturage/js/custom.js')}}" charset="UTF-8"></script>
+        <script src="{{asset('bundles/ucovoiturage/js/bootstrap-datetimepicker.js')}}" charset="UTF-8"></script>
+        <script src="{{asset('bundles/ucovoiturage/js/bootstrap-datetimepicker.fr.js')}}" charset="UTF-8"></script>
+
+        <script type="text/javascript">
+    $('.form_datetime').datetimepicker({
+        //language:  'fr',
+        weekStart: 1,
+        todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 2,
+		forceParse: 0,
+        showMeridian: 1
+    });
+	$('.form_date').datetimepicker({
+        language:  'fr',
+        weekStart: 1,
+        todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 2,
+		minView: 2,
+		forceParse: 0
+    });
+	$('.form_time').datetimepicker({
+        language:  'fr',
+        weekStart: 1,
+        todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 1,
+		minView: 0,
+		maxView: 1,
+		forceParse: 0
+    });
+</script>
+    </body>
+</html>
+
+
+
+<!----- Inscription ancien //////////////////////////////////////////////////////////////////////////>
+
+ <div class="container">
+      <div class="row">
+          <form role="form" action="{{path('ucovoiturage_validation')}}" method="POST">
+            <div class="col-lg-6">
+                <div class="well well-sm"><strong><span class="glyphicon glyphicon-asterisk"></span>Required Field</strong></div>
+                <div class="form-group">
+                    <label for="cin">Entrez Votre cin : </label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" name="cin" id="cin" placeholder="Votre numero Cin" >
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="nom">Entrer Votre nom : </label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="nom" name="nom" placeholder="Votre Nom" >
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="prenom">Entrer votre prénom : </label>
+                    <div class="input-group">
+                        <input type="text" class="form-control" id="prenom" name="prenom" placeholder="Votre Prenom" >
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="user">Utilisateur : </label>
+                     <div class="input-group">
+                        <input type="text" class="form-control" id="user" name="user" placeholder="Votre nom d'utilisateur">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="InputMessage">Mot de passe : </label>
+                     <div class="input-group">
+                        <input type="text" class="form-control" id="password" name="password" placeholder="Votre mot clé" >
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="sexe">Sexe : </label>
+                     <div class="checkbox">
+                        <label><input type="checkbox" name="sexe" id="sexe">Feminin</label>
+                    </div>
+                     <div class="checkbox">
+                        <label><input type="checkbox" name="sexe" id="sexe">Masculin</label>
+                    </div>
+                </div>
+                
+                    <label for="date">Date de Naissance: </label>
+                    
+                       <input class="datepicker" data-date-format="yyyy-mm-dd" name="date" id="date">
+                  
+              
+                <div class="form-group">
+                    <label for="matricule">Matricule : </label>
+                     <div class="input-group">
+                        <input type="text" class="form-control" id="matricule" name="matricule" placeholder="Votre Matricule ULT" >
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="InputMessage">Numero de permis </label>
+                     <div class="input-group">
+                        <input type="text" class="form-control" id="permis" name="permis" placeholder="numero de permis" >
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="compte">Compte : </label>
+                     <div class="input-group">
+                        <input type="text" class="form-control" id="compte" name="compte" placeholder="Votre Numero de compte">
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                    </div>
+                </div>
+               <div class="form-group">
+                    <label for="ville">Ville : </label>
+                     <div class="input-group">
+                        <input type="text" class="form-control" id="ville" name="ville" placeholder="Quartier à Tunis" >
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="contact">Contact : </label>
+                     <div class="input-group">
+                        <input type="text" class="form-control" id="contact" name="contact" placeholder="Votre contact" >
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="eamil"> E-mail: </label>
+                     <div class="input-group">
+                        <input type="email" class="form-control" id="email" name="eamil" placeholder="Votre Email" >
+                        <span class="input-group-addon"><span class="glyphicon glyphicon-asterisk"></span></span>
+                    </div>
+                </div>
+                <input type="submit" name="submit" id="submit" value="valider" class="btn btn-info pull-right">
+            </div>
+        </form>
+        <div class="col-lg-5 col-md-push-1">
+            <div class="col-md-12">
+                <div class="alert alert-success">
+                    <strong><span class="glyphicon glyphicon-ok"></span> Success! Message envoyé.</strong>
+                </div>
+                <div class="alert alert-danger">
+                    <span class="glyphicon glyphicon-remove"></span><strong> Erreur! Revoyez toutes les entrées.</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!----- Inscription ancien END//////////////////////////////////////////////////////////////////////////>

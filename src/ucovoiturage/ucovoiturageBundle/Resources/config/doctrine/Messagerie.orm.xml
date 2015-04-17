@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ucovoiturage\ucovoiturageBundle\Entity\Messagerie" table="messagerie">
+    <indexes>
+      <index name="id_pers1" columns="id_pers1"/>
+      <index name="id_pers2" columns="id_pers2"/>
+    </indexes>
+    <id name="idMsg" type="integer" column="id_msg">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="sujet" type="string" column="sujet" length="200" nullable="true"/>
+    <field name="contenuMsg" type="string" column="contenu_msg" length="1000" nullable="true"/>
+    <field name="dateMsg" type="date" column="date_msg" nullable="true"/>
+    <many-to-one field="idPers2" target-entity="Personne">
+      <join-columns>
+        <join-column name="id_pers2" referenced-column-name="cin"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idPers1" target-entity="Personne">
+      <join-columns>
+        <join-column name="id_pers1" referenced-column-name="cin"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

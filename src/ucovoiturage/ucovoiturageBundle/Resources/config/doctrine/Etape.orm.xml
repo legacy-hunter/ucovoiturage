@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ucovoiturage\ucovoiturageBundle\Entity\Etape" table="etape">
+    <indexes>
+      <index name="id_annonce" columns="id_annonce"/>
+    </indexes>
+    <id name="idEtape" type="integer" column="id_etape">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="ville" type="string" column="ville" length="30" nullable="true"/>
+    <field name="prix" type="integer" column="prix" nullable="true"/>
+    <many-to-one field="idAnnonce" target-entity="Annonce">
+      <join-columns>
+        <join-column name="id_annonce" referenced-column-name="id_annonce"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

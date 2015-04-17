@@ -1,0 +1,30 @@
+gestion_annonce:
+    path:     /
+    defaults: { _controller: "covoiturageBundle:annonce:index" }
+
+gestion_annonce_show:
+    path:     /{id}/show
+    defaults: { _controller: "covoiturageBundle:annonce:show" }
+
+gestion_annonce_new:
+    path:     /new
+    defaults: { _controller: "covoiturageBundle:annonce:new" }
+
+gestion_annonce_create:
+    path:     /create
+    defaults: { _controller: "covoiturageBundle:annonce:create" }
+    methods:  POST
+
+gestion_annonce_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "covoiturageBundle:annonce:edit" }
+
+gestion_annonce_update:
+    path:     /{id}/update
+    defaults: { _controller: "covoiturageBundle:annonce:update" }
+    methods:  [POST, PUT]
+
+gestion_annonce_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "covoiturageBundle:annonce:delete" }
+    methods:  [POST, DELETE]

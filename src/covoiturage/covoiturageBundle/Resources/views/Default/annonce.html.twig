@@ -1,0 +1,106 @@
+{# empty Twig template #}
+{% extends "::base.html.twig"%}
+{% block template_annonce %} 
+    <html>
+        <head>
+            
+             <head>
+        <script src="{{asset('bundles/ucovoiturage/plugins/jquery-1.10.2.js')}}"></script>
+         <script type="text/javascript">  
+           $(document).ready(function(){ 
+               $("#nbPlace").show();
+               $("#prix").show();
+               $("#label_nbPlace").show();
+               $("#label_prix").show();
+               $("#nbPlace").attr("required","required");
+               $("#prix").attr("required","required");
+              $("#choix").change( function(){
+               if($("#choix").val()=="passager"){
+                $("#label_nbPlace").hide();
+               $("#label_prix").hide();
+               $("#prix").hide();
+               $("#nbPlace").hide();
+               $("#prix").attr("required",false);
+               $("#nbPlace").attr("required",false);
+               }else{
+                $("#nbPlace").show();
+               $("#prix").show();
+               $("#label_nbPlace").show();
+               $("#label_prix").show();
+               $("#nbPlace").attr("required","required");
+               $("#prix").attr("required","required");
+               }
+           });
+           });
+           </script>
+        </head>
+            
+            
+        </head>
+        <body>
+            <div class="container">
+                <div class="row">
+                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+                        {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
+                        <a href="{{ path('fos_user_security_logout') }}">
+                            {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
+                        </a>
+                    {% else %}
+                        <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
+                    {% endif %}
+                </div>
+                <div class="row">
+                    <br> 
+                    {% include '::menu_profil.html.twig'%} 
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                            <form  method="POST" class="" action="{{path('covoiturage_annonce')}} {{ form_enctype(form)}}">
+                                {{form_label(form.lieuDepart)}}{{form_widget(form.lieuDepart,{'attr': {'class':'form-control'}})}}{{form_errors(form.lieuDepart)}}
+                                <br>
+                                {{form_label(form.lieuArrive)}}{{form_widget(form.lieuArrive,{'attr': {'class':'form-control'}})}}{{form_errors(form.lieuDepart)}}
+                                <br>
+                                
+                                <div class="input-group date form_datetime col-md-5" data-date="1979-09-16T05:25:07Z" data-date-format="yyyy-mm-dd hh:ii" data-link-field="dtp_input1">
+                                {{form_label(form.dateDepart)}}{{form_widget(form.dateDepart,{'attr': {'class':'form-control'}})}}
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-th"></span></span>
+                                </div>
+                                 <input type="hidden" id="dtp_input2" value="" /><br/>
+                              
+                                 {% if (role == 0 )  %}   
+                                    
+                                 <br>
+                                <label for="nbPlace">Nombre de places</label>
+                                 <input id="nbPlace" name="nbPlace" type="text" class="form-control" required="required"/> 
+                                <br>
+                                 <label for="prix">prix</label>
+                                 <input id="prix" name="prix" type="text" class="form-control" required="required"/> 
+                                 <br>
+                                 {%elseif role == 2 %}
+                                     <select id="choix" name="choix">
+                                        <option value="conducteur">conducteur</option>
+                                        <option value="passager">passager</option>
+                                    </select>
+                                     <br><br>
+                                <label for="nbPlace" id='label_nbPlace'>Nombre de places</label>
+                                 <input id="nbPlace" name="nbPlace" type="text" class="form-control"/> 
+                                <br>
+                                 <label for="prix" id='label_prix'>prix</label>
+                                 <input id="prix" name="prix" type="text" class="form-control"/> 
+                                 <br> 
+                                {% endif %}
+                                {{form_label(form.precisions)}} <br>
+                                {{form_widget(form.precisions)}}
+                                {{ form_rest(form)}}
+                                <br>
+                                <input type ="submit" value= "valider"/>
+                               {{message | default("")}}
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </body>
+    </html>
+
+{% endblock %}

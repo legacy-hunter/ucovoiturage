@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ucovoiturage\ucovoiturageBundle\Entity\Annonce" table="annonce">
+    <indexes>
+      <index name="id_pers" columns="id_pers"/>
+    </indexes>
+    <id name="idAnnonce" type="integer" column="id_annonce">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="lieuDep" type="string" column="lieu_dep" length="30" nullable="false"/>
+    <field name="lieuArr" type="string" column="lieu_arr" length="30" nullable="false"/>
+    <field name="dateDep" type="date" column="date_dep" nullable="true"/>
+    <field name="nbPlace" type="integer" column="nb_place" nullable="false"/>
+    <field name="prix" type="integer" column="prix" nullable="true"/>
+    <field name="note" type="integer" column="note" nullable="true"/>
+    <field name="precisions" type="string" column="precisions" length="30" nullable="true"/>
+    <field name="heure" type="time" column="heure" nullable="false"/>
+    <many-to-one field="idPers" target-entity="Personne">
+      <join-columns>
+        <join-column name="id_pers" referenced-column-name="cin"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

@@ -1,0 +1,34 @@
+{# empty Twig template #}
+{% extends '::base.html.twig' %}
+{% block body -%}
+    <div class="col-xs-12 col-sm-10 col-md-6"> 
+<table  table table-bordered table-striped table-hover>
+    <thead>
+        <tr>
+            <th>Départs</th>
+            <th>Arrivés</th>
+            <th>Date de l'opération</th>
+            <th>Prix</th>
+            <th>Places disponibles</th>
+            <th>Detaïls de l'opération</th>
+        </tr>
+    </thead>
+    <tbody>
+  {%for annonce in annonces %}
+      <tr>
+          <td>{{annonce.lieuDepart}}</td>
+          <td>{{annonce.lieuArrive}}</td>
+          <td>{% if annonce.dateDepart %}{{ annonce.dateDepart|date('Y-m-d H:i:s') }}{% endif %}</td>
+          <td>{{annonce.prix}}</td>
+          <td>{{annonce.nbPlace}}</td>
+          <td>{{annonce.precisions}}</td>
+          <td><a  href="{{ path('gestion_annonce_edit', { 'id': annonce.id }) }}">modifier</a></td>
+          <td><a href="{{path('supprimer_annonce',{ 'id': annonce.id })}}" onclick="return confirm('are u sure?');">supprimer</a></td>
+          <td><a href="{{path('form_etape',{ 'id': annonce.id })}}">Ajouter une etape</a></td>
+        
+      </tr>
+{%endfor%}
+    </tbody>
+</table>
+    </div>
+{%endblock%}

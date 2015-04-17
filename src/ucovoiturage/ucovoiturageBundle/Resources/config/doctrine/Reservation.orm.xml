@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="ucovoiturage\ucovoiturageBundle\Entity\Reservation" table="reservation">
+    <indexes>
+      <index name="id_pers" columns="id_pers"/>
+      <index name="id_annonce" columns="id_annonce"/>
+    </indexes>
+    <id name="idRes" type="integer" column="id_res">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="dateRes" type="date" column="date_res" nullable="true"/>
+    <field name="commentaire" type="string" column="commentaire" length="1000" nullable="true"/>
+    <field name="nbPlace" type="integer" column="nb_place" nullable="true"/>
+    <many-to-one field="idAnnonce" target-entity="Annonce">
+      <join-columns>
+        <join-column name="id_annonce" referenced-column-name="id_annonce"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-one field="idPers" target-entity="Personne">
+      <join-columns>
+        <join-column name="id_pers" referenced-column-name="cin"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

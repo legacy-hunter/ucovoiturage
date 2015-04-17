@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+   <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <!--[if IE]>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <![endif]-->
+    <title>Ucovoiturage</title>
+      <link href="{{asset('bundles/ucovoiturage/css/bootstrap-datetimepicker.min.css')}}" rel="stylesheet" media="screen"/>   
+    <link href="{{asset('bundles/ucovoiturage/css/bootstrap.css')}}" rel="stylesheet"/>
+    <!-- BOOTSTRAP CORE STYLE CSS -->
+    <link href="{{asset('bundles/ucovoiturage/css/bootstrap.min.css')}}" rel="stylesheet"/>
+    <!-- FONTAWESOME STYLE CSS -->
+    <link href="{{asset('bundles/ucovoiturage/css/font-awesome.min.css')}}" rel="stylesheet" />
+    <!-- CUSTOM STYLE CSS -->
+    <link href="{{asset('bundles/ucovoiturage/css/style.css')}}" />    
+    <!-- GOOGLE FONT -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+    <link href="{{asset('css/custom2.css')}}"  rel="stylesheet"/>
+ </head>   
+     <body>
+<!-- novabar /////////////////////////////////-->
+ <nav id="custom-bootstrap-menu" class="navbar navbar-default" role="navigation" >
+     <div class="container-fluid" >
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+
+        <a class="navbar-brand" href="#"> ULT Covoiturage</a>
+      </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="#">Acceuil <span class="sr-only">(current)</span></a></li>
+        <li><a href="{{ path('fos_user_profile_show') }}">Profil</a></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Annonce<span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <li><a href="#">Publication_Annonce</a></li>
+            <li><a href="#">Publication Opération</a></li>
+            <li class="divider"></li>
+            <li><a href="#">crée Annonce</a></li>
+            <li class="divider"></li>
+            <li><a href="#">crée Opération</a></li>
+          </ul>
+        <li><a href="{{path('liste_covoiturages')}}">Vos covoiturages</a></li>
+          <li><a href="#"><span class="glyphicons glyphicon glyphicon-envelope"></span> Message </a></li> 
+        </li>
+      </ul>
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+        </form>
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#">Sing out</a></li>
+        </ul>
+      </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+  </nav>
+<!-- novabar END /////////////////////////////////==========================================-->
+{% block layout_fosuser_body %}    
+{% endblock %}
+{% block template_annonce %}    
+{% endblock %}
+{% block body %}
+{% endblock %}
+        
+    
+
+<!-- FOOTER -->
+  
+
+<br>
+   <footer>
+     <div class="bottom" role="navigation"> 
+      <div class="container2">
+        <!--pull left -->
+
+          <div class="navbar-text pull-left"> 
+            <p>&copy; 2014 ULT Company, Inc. &middot; <a href="#">Privacy</a> &middot; <a href="#">Terms</a></p>
+          </div>
+
+
+          <!--pull right  -->
+         <div class="col-md-4">
+          <div class="navbar-text pull-right">
+            <p class="pull-right"><a href="#">Back to top</a></p>
+            <a herf="#"><i class="fa fa-facebook-official fa-2x"></i></a>
+            <a herf="#"><i class="fa fa fa-twitter-square fa-2x"></i></a>
+            <a herf="#"><i class="fa fa-google-plus fa-2x"></i></a>
+         </div>
+         
+            <h3><span class="glyphicon glyphicon-heart"></span> Footer section 1</h3>
+            <p>Content for the first footer section.</p>
+        </div>
+        <div class="col-md-4">
+            <h3><span class="glyphicon glyphicon-star"></span> Footer section 2</h3>
+            <p>Content for the second footer section.</p>
+        </div>
+        <div class="col-md-4">
+            <h3><span class="glyphicon glyphicon-music"></span> Footer section 3</h3>
+        </div>
+
+
+      </div>
+    </div> 
+   </footer>  
+
+
+
+     <script src="{{asset('bundles/ucovoiturage/plugins/jquery-1.10.2.js')}}"> </script>
+    <!-- BOOTSTRAP SCRIPTS  -->
+    <script src="{{asset('bundles/ucovoiturage/plugins/bootstrap.js')}}"> </script>
+    <script src="{{asset('bundles/ucovoiturage/js/bootstrap.min.js')}}"> </script>
+    <script src="{{asset('bundles/ucovoiturage/js/bootstrap-datetimepicker.js')}}" charset="UTF-8"></script>
+    <script src="{{asset('bundles/ucovoiturage/js/bootstrap-datetimepicker.fr.js')}}" charset="UTF-8"></script>
+    <script src="{{ asset('bundles/ucovoiturage/js/custom.js')}}"> </script>
+    <script src="{{asset('bundles/ucovoiturage/js/bootstrap-datepicker.js')}}"></script>
+
+     <script type="text/javascript">
+         
+    $('.form_datetime').datetimepicker({
+        //language:  'fr',
+        weekStart: 1,
+        todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 2,
+		forceParse: 0,
+        showMeridian: 1
+    });
+	$('.form_date').datetimepicker({
+        language:  'fr',
+        weekStart: 1,
+        todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 2,
+		minView: 2,
+		forceParse: 0
+    });
+	$('.form_time').datetimepicker({
+        language:  'fr',
+        weekStart: 1,
+        todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 1,
+		minView: 0,
+		maxView: 1,
+		forceParse: 0
+    });
+</script>
+    {% block javascripts %}{% endblock %}
+    </body>
+    
+</html>
