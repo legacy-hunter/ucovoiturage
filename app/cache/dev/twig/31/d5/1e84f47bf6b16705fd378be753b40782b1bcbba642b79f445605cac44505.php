@@ -50,45 +50,57 @@ class __TwigTemplate_31d51e84f47bf6b16705fd378be753b40782b1bcbba642b79f445605cac
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/ucovoiturage/css/font-awesome.min.css"), "html", null, true);
         echo "\" rel=\"stylesheet\" />
     <!-- CUSTOM STYLE CSS -->
-    <link href=\"";
-        // line 19
-        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/ucovoiturage/css/style.css"), "html", null, true);
-        echo "\" />    
+       
     <!-- GOOGLE FONT -->
     <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
     <link href=\"";
         // line 22
-        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("css/custom2.css"), "html", null, true);
-        echo "\"  rel=\"stylesheet\"/>
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/ucovoiturage/css/custom2.css"), "html", null, true);
+        echo "\" rel=\"stylesheet\" type='text/css' />
+    <link href=\"";
+        // line 23
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/ucovoiturage/css/footerstayl.css"), "html", null, true);
+        echo "\" rel=\"stylesheet\" type=\"text/css\"/>
  </head>   
      <body>
 <!-- novabar /////////////////////////////////-->
- <nav id=\"custom-bootstrap-menu\" class=\"navbar navbar-default\" role=\"navigation\" >
-     <div class=\"container-fluid\" >
+<div id=\"container\">
+ <nav id=\"custom-bootstrap-menu\" class=\"navbar navbar-default  \" role=\"navigation\" >
+     <div class=\"container-fluid\">
       <!-- Brand and toggle get grouped for better mobile display -->
       <div class=\"navbar-header\">
-        
       <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#bs-example-navbar-collapse-1\">
         <span class=\"sr-only\">Toggle navigation</span>
         <span class=\"icon-bar\"></span>
         <span class=\"icon-bar\"></span>
         <span class=\"icon-bar\"></span>
       </button>
-
         <a class=\"navbar-brand\" href=\"#\"> ULT Covoiturage</a>
       </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class=\"collapse navbar-collapse\" id=\"bs-example-navbar-collapse-1\">
       <ul class=\"nav navbar-nav\">
-        <li class=\"active\"><a href=\"#\">Acceuil <span class=\"sr-only\">(current)</span></a></li>
+        <li class=\"active\"><a href=\"";
+        // line 44
+        echo $this->env->getExtension('routing')->getPath("covoiturage_homepage");
+        echo "\">Acceuil <span class=\"sr-only\">(current)</span></a></li>
         <li><a href=\"";
         // line 45
         echo $this->env->getExtension('routing')->getPath("fos_user_profile_show");
         echo "\">Profil</a></li>
+        <li><a href=\"";
+        // line 46
+        echo $this->env->getExtension('routing')->getPath("liste_annonce");
+        echo "\">Mes annonces</a></li>
+        <li><a href=\"";
+        // line 47
+        echo $this->env->getExtension('routing')->getPath("liste_covoiturages");
+        echo "\">Vos covoiturages</a></li>
+          <li><a href=\"#\"><span class=\"glyphicons glyphicon glyphicon-envelope\"></span> Message </a></li> 
         <li class=\"dropdown\">
-          <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-expanded=\"false\">Annonce<span class=\"caret\"></span></a>
-          <ul class=\"dropdown-menu\" role=\"menu\">
+          <a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"menu\" aria-expanded=\"false\">Annonce<span class=\"caret\"></span></a>
+          <ul class=\"dropdown-menu\" role=\"button\">  
             <li><a href=\"#\">Publication_Annonce</a></li>
             <li><a href=\"#\">Publication Opération</a></li>
             <li class=\"divider\"></li>
@@ -96,108 +108,114 @@ class __TwigTemplate_31d51e84f47bf6b16705fd378be753b40782b1bcbba642b79f445605cac
             <li class=\"divider\"></li>
             <li><a href=\"#\">crée Opération</a></li>
           </ul>
-        <li><a href=\"";
-        // line 56
-        echo $this->env->getExtension('routing')->getPath("liste_covoiturages");
-        echo "\">Vos covoiturages</a></li>
-          <li><a href=\"#\"><span class=\"glyphicons glyphicon glyphicon-envelope\"></span> Message </a></li> 
-        </li>
+      </li>
       </ul>
-      <form class=\"navbar-form navbar-right\" role=\"search\">
-        <div class=\"form-group\">
-          <input type=\"text\" class=\"form-control\" placeholder=\"Search\">
-        </div>
-        <button type=\"submit\" class=\"btn btn-default\">Submit</button>
-        </form>
         <ul class=\"nav navbar-nav navbar-right\">
-          <li><a href=\"#\">Sing out</a></li>
+             ";
+        // line 62
+        if ($this->env->getExtension('security')->isGranted("IS_AUTHENTICATED_REMEMBERED")) {
+            // line 63
+            echo "                 <span style=\"color: white;\">Bonjour , ";
+            echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "user", array()), "username", array()), "html", null, true);
+            echo " | </span>
+                    <a href=\"";
+            // line 64
+            echo $this->env->getExtension('routing')->getPath("fos_user_security_logout");
+            echo "\">
+                        ";
+            // line 65
+            echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("layout.logout", array(), "FOSUserBundle"), "html", null, true);
+            echo "
+                    </a>
+                    &nbsp; <span class=\"glyphicon glyphicon-user \" style=\"color: white;\"></span>
+             
+                    
+                ";
+        }
+        // line 71
+        echo "          <li><a href=\"";
+        echo $this->env->getExtension('routing')->getPath("fos_user_registration_register");
+        echo "\">Inscription</a></li>
         </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>
 <!-- novabar END /////////////////////////////////==========================================-->
 ";
-        // line 73
-        $this->displayBlock('layout_fosuser_body', $context, $blocks);
-        // line 75
-        $this->displayBlock('template_annonce', $context, $blocks);
         // line 77
-        $this->displayBlock('body', $context, $blocks);
+        $this->displayBlock('layout_fosuser_body', $context, $blocks);
         // line 79
+        $this->displayBlock('template_annonce', $context, $blocks);
+        // line 81
+        $this->displayBlock('body', $context, $blocks);
+        // line 83
         echo "        
     
+
+
 
 <!-- FOOTER -->
   
 
-<br>
-   <footer>
-     <div class=\"bottom\" role=\"navigation\"> 
-      <div class=\"container2\">
-        <!--pull left -->
-
-          <div class=\"navbar-text pull-left\"> 
-            <p>&copy; 2014 ULT Company, Inc. &middot; <a href=\"#\">Privacy</a> &middot; <a href=\"#\">Terms</a></p>
-          </div>
 
 
-          <!--pull right  -->
-         <div class=\"col-md-4\">
-          <div class=\"navbar-text pull-right\">
+     
+ 
+
+<div class=\"navbar navbar-default navbar-fixed-bottom\" style=\"background-color: #BDF4C4;
+    min-height: 10px;
+    transition:min-height .4s;
+    transition:background-color .50s;
+    \">
+    <p class=\"navbar-text pull-left\" style=\"color: #337AB7;\">ULT COVOITURAGE  groupe  &copy; 2014-2015 mentions légales</p>
+    <div class=\"navbar-text pull-right\">
             <p class=\"pull-right\"><a href=\"#\">Back to top</a></p>
             <a herf=\"#\"><i class=\"fa fa-facebook-official fa-2x\"></i></a>
             <a herf=\"#\"><i class=\"fa fa fa-twitter-square fa-2x\"></i></a>
             <a herf=\"#\"><i class=\"fa fa-google-plus fa-2x\"></i></a>
          </div>
-         
-            <h3><span class=\"glyphicon glyphicon-heart\"></span> Footer section 1</h3>
-            <p>Content for the first footer section.</p>
-        </div>
-        <div class=\"col-md-4\">
-            <h3><span class=\"glyphicon glyphicon-star\"></span> Footer section 2</h3>
-            <p>Content for the second footer section.</p>
-        </div>
-        <div class=\"col-md-4\">
-            <h3><span class=\"glyphicon glyphicon-music\"></span> Footer section 3</h3>
-        </div>
-
-
-      </div>
-    </div> 
-   </footer>  
-
-
-
-     <script src=\"";
-        // line 123
+    <div class=\"row\">
+    <div class=\"col-lg-push-10\">
+     <img src=\"";
+        // line 110
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/ucovoiturage/images/bord.png"), "html", null, true);
+        echo "\" width=\"40\" height=\"40\" />
+    </div>
+    </div>
+</div>
+</div>
+    <script src=\"";
+        // line 115
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/ucovoiturage/plugins/jquery-1.10.2.js"), "html", null, true);
         echo "\"> </script>
     <!-- BOOTSTRAP SCRIPTS  -->
+    <script src=\"http://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js\"></script>
     <script src=\"";
-        // line 125
+        // line 118
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/ucovoiturage/plugins/bootstrap.js"), "html", null, true);
-        echo "\"> </script>
+        echo "\"></script>
     <script src=\"";
-        // line 126
+        // line 119
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/ucovoiturage/js/bootstrap.min.js"), "html", null, true);
-        echo "\"> </script>
+        echo "\"></script>
     <script src=\"";
-        // line 127
+        // line 120
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/ucovoiturage/js/bootstrap-datetimepicker.js"), "html", null, true);
         echo "\" charset=\"UTF-8\"></script>
     <script src=\"";
-        // line 128
+        // line 121
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/ucovoiturage/js/bootstrap-datetimepicker.fr.js"), "html", null, true);
         echo "\" charset=\"UTF-8\"></script>
     <script src=\"";
-        // line 129
+        // line 122
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/ucovoiturage/js/custom.js"), "html", null, true);
         echo "\"> </script>
     <script src=\"";
-        // line 130
+        // line 123
         echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/ucovoiturage/js/bootstrap-datepicker.js"), "html", null, true);
         echo "\"></script>
 
+  
      <script type=\"text/javascript\">
          
     \$('.form_datetime').datetimepicker({
@@ -233,35 +251,36 @@ class __TwigTemplate_31d51e84f47bf6b16705fd378be753b40782b1bcbba642b79f445605cac
     });
 </script>
     ";
-        // line 166
+        // line 160
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 167
-        echo "    </body>
+        // line 161
+        echo "    
+    </body>
     
 </html>
 ";
     }
 
-    // line 73
+    // line 77
     public function block_layout_fosuser_body($context, array $blocks = array())
     {
         echo "    
 ";
     }
 
-    // line 75
+    // line 79
     public function block_template_annonce($context, array $blocks = array())
     {
         echo "    
 ";
     }
 
-    // line 77
+    // line 81
     public function block_body($context, array $blocks = array())
     {
     }
 
-    // line 166
+    // line 160
     public function block_javascripts($context, array $blocks = array())
     {
     }
@@ -278,6 +297,6 @@ class __TwigTemplate_31d51e84f47bf6b16705fd378be753b40782b1bcbba642b79f445605cac
 
     public function getDebugInfo()
     {
-        return array (  265 => 166,  260 => 77,  253 => 75,  246 => 73,  239 => 167,  237 => 166,  198 => 130,  194 => 129,  190 => 128,  186 => 127,  182 => 126,  178 => 125,  173 => 123,  127 => 79,  125 => 77,  123 => 75,  121 => 73,  101 => 56,  87 => 45,  61 => 22,  55 => 19,  50 => 17,  45 => 15,  40 => 13,  36 => 12,  23 => 1,);
+        return array (  284 => 160,  279 => 81,  272 => 79,  265 => 77,  257 => 161,  255 => 160,  215 => 123,  211 => 122,  207 => 121,  203 => 120,  199 => 119,  195 => 118,  189 => 115,  181 => 110,  152 => 83,  150 => 81,  148 => 79,  146 => 77,  136 => 71,  127 => 65,  123 => 64,  118 => 63,  116 => 62,  98 => 47,  94 => 46,  90 => 45,  86 => 44,  62 => 23,  58 => 22,  50 => 17,  45 => 15,  40 => 13,  36 => 12,  23 => 1,);
     }
 }

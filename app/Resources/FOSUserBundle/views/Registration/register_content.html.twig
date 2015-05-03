@@ -1,82 +1,116 @@
 {% trans_default_domain 'FOSUserBundle' %}
 {% block body %}
-   <script  src="{{asset('bundles/ucovoiturage/plugins/jquery-1.10.2.js')}}"></script>
-   `<script src="{{asset('js/main.js')}}"></script>
-   <script type="text/javascript">  
-           $(document).ready(function(){       
-           $("#compte_label").show();
-               $("#numPermis_label").show();
-                $("#fos_user_registration_form_compte").show();
-                $("#fos_user_registration_form_numPermis").show();
-                $("#fos_user_registration_form_numPermis").attr("required","required");
-                $("#fos_user_registration_form_compte").attr("required","required");
-                $("#fos_user_registration_form_role").change(function() {
-                if ($("#fos_user_registration_form_role").val() == "1"){  
-                $("#fos_user_registration_form_numPermis").attr("required",false);
-                $("#fos_user_registration_form_compte").attr("required",false);
-                $("#fos_user_registration_form_numPermis").hide();
-                $("#fos_user_registration_form_compte").hide(); 
-                $("#compte_label").hide();
-                $("#numPermis_label").hide();
-                } else{
-                 $("#fos_user_registration_form_numPermis").attr("required","required");
-                $("#fos_user_registration_form_compte").attr("required","required");
-                
-                $("#fos_user_registration_form_compte").show();
-                $("#fos_user_registration_form_numPermis").show();
-                 $("#compte_label").show();
-               $("#numPermis_label").show();
-                }
-                
-        });
-    });
-    
-</script>
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6">
-                 <img src="{{ asset('bundles/ucovoiturage/images/banier4.png')}}"  width="200" height="200">
-                <h3>Inscrivez vous!!! <br> Effectuez toute opération de Covoiturage</h3>
-            </div>
-            <div class="col-lg-6">
-                <h3>Inscription</h3> <br>
-                <div class="form-group">
-                    <form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST" class="fos_user_registration_register" role="form"> 
-                        {{ form_label(form.nom) }} {{ form_widget(form.nom,{'attr': {'class':'form-control'}})}}{{ form_errors(form.nom) }}<br>
-                        {{ form_label(form.prenom) }} {{ form_widget(form.prenom,{'attr': {'class':'form-control'}})}}{{ form_errors(form.prenom) }}<br>
-                        {{ form_label(form.ville) }} {{ form_widget(form.ville,{'attr': {'class':'form-control'}})}}{{ form_errors(form.ville)}}<br>
-                        {{ form_label(form.matricule) }} {{ form_widget(form.matricule,{'attr': {'class':'form-control'}})}}{{ form_errors(form.matricule)}}<br>
-                        {{ form_label(form.telephone) }} {{ form_widget(form.telephone,{'attr': {'class':'form-control'}})}}{{ form_errors(form.telephone)}}<br>
-                        {{ form_label(form.cin) }} {{ form_widget(form.cin,{'attr': {'class':'form-control'}})}}{{ form_errors(form.cin)}}<br>
-                        {{ form_label(form.email) }} {{ form_widget(form.email,{'attr': {'class':'form-control'}})}}{{ form_errors(form.email)}}<br>
-                        {{ form_label(form.sexe) }} {{ form_widget(form.sexe,{'attr': {'class':'checkbox'}})}}{{ form_errors(form.sexe)}}<br>
-                        {{form_label(form.dateNaissance)}}
-                        <div class="input-group date form_date col-md-5"  data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
-                            {{ form_widget(form.dateNaissance,{'attr': {'class': ''}})}}
-                            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-                        </div>
-                            <input type="hidden" id="dtp_input2" value="" /><br/>
+    <html>
+        <head>
+            <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+            
+            <script  src="{{asset('bundles/ucovoiturage/plugins/jquery-1.10.2.js')}}"></script>
+            <script  type="text/javascript" charset="utf-8" src="{{asset('bundles/ucovoiturage/js/INS_edgePreload.js')}}"></script>
+            <script src="{{asset('js/main.js')}}"></script>
+            <script type="text/javascript">
+                $(document).ready(function () {
+                    $("#compte_label").show();
+                    $("#numPermis_label").show();
+                    $("#label_mat").show();
+                    $("#label_modele").show();
+                    $("#fos_user_registration_form_matriculeVoiture").show();
+                    $("#fos_user_registration_form_modeleVoiture").show();
+                     $("#fos_user_registration_form_matriculeVoiture").attr("required", "required");
+                    $("#fos_user_registration_form_modeleVoiture").attr("required", "required");
+                    $("#fos_user_registration_form_compte").show();
+                    $("#fos_user_registration_form_numPermis").show();
+                    $("#fos_user_registration_form_numPermis").attr("required", "required");
+                    $("#fos_user_registration_form_compte").attr("required", "required");
+                    
+                    $("#fos_user_registration_form_role").change(function () {
+                        if ($("#fos_user_registration_form_role").val() == "1") {
+                            $("#fos_user_registration_form_numPermis").attr("required", false);
+                            $("#fos_user_registration_form_compte").attr("required", false);
+                            $("#fos_user_registration_form_matriculeVoiture").attr("required", false);
+                            $("#fos_user_registration_form_modeleVoiture").attr("required", false);
+                            $("#fos_user_registration_form_numPermis").hide();
+                            $("#fos_user_registration_form_compte").hide();
+                            $("#compte_label").hide();
+                            $("#numPermis_label").hide();
+                             $("#label_mat").hide();
+                             $("#label_modele").hide();
+                              $("#fos_user_registration_form_modeleVoiture").hide();
+                             $("#fos_user_registration_form_matriculeVoiture").hide();
+                        } else {
+                            $("#fos_user_registration_form_numPermis").attr("required", "required");
+                            $("#fos_user_registration_form_compte").attr("required", "required");
+                            
+                            $("#fos_user_registration_form_compte").show();
+                            $("#fos_user_registration_form_numPermis").show();
+                            $("#compte_label").show();
+                            $("#numPermis_label").show();
+                            $("#fos_user_registration_form_matriculeVoiture").show();
+                    $("#fos_user_registration_form_modeleVoiture").show();
+                    $("#fos_user_registration_form_matriculeVoiture").attr("required", "required");
+                    $("#fos_user_registration_form_modeleVoiture").attr("required", "required");
+                     $("#compte_label").show();
+                    $("#numPermis_label").show();
+                    $("#label_mat").show();
+                    $("#label_modele").show();
+                        }
+
+                    });
+                });
+
+            </script>
+            <style>
+                .edgeLoad-EDGE-11035687 { visibility:hidden; }
+            </style>
+        </head>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                   <img src="{{ asset('bundles/ucovoiturage/images/useradd.png')}}"  width="300" height="400">
+                   
+                </div>
+                <div class="col-lg-6">
+                    <h3>Formulaire d'inscription</h3> <br>
+
+                    <div class="form-group">
+                        <form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} method="POST"  role="form"> 
+                            {{ form_label(form.nom) }} {{ form_widget(form.nom,{'attr': {'class':'form-control'}})}}{{ form_errors(form.nom) }}<br>
+                            {{ form_label(form.prenom) }} {{ form_widget(form.prenom,{'attr': {'class':'form-control'}})}}{{ form_errors(form.prenom) }}<br>
+                            {{ form_label(form.ville) }} {{ form_widget(form.ville,{'attr': {'class':'form-control'}})}}{{ form_errors(form.ville)}}<br>
+                            {{ form_label(form.matricule) }} {{ form_widget(form.matricule,{'attr': {'class':'form-control'}})}}{{ form_errors(form.matricule)}}<br>
+                            {{ form_label(form.telephone) }} {{ form_widget(form.telephone,{'attr': {'class':'form-control'}})}}{{ form_errors(form.telephone)}}<br>
+                            {{ form_label(form.cin) }} {{ form_widget(form.cin,{'attr': {'class':'form-control'}})}}{{ form_errors(form.cin)}}<br>
+                            {{ form_label(form.email) }} {{ form_widget(form.email,{'attr': {'class':'form-control'}})}}{{ form_errors(form.email)}}<br>
+                            {{ form_label(form.sexe) }} {{ form_widget(form.sexe,{'attr': {'class':'checkbox'}})}}{{ form_errors(form.sexe)}}<br>
+                            {{form_label(form.dateNaissance)}}
+                            <div class="input-group date form_date col-md-5"  data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                                {{ form_widget(form.dateNaissance,{'attr': {'class': ''}})}}
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                            </div>
+                            {{form_errors(form.dateNaissance)}}
+                            <input type="hidden" id="dtp_input2" value="" />
                             <br>
-                        {{ form_label(form.username) }} {{ form_widget(form.username,{'attr': {'class':'form-control','value':''}})}}{{ form_errors(form.username)}}<br>
-                        <br>
-                        {{ form_label(form.plainPassword.first)}}{{ form_widget(form.plainPassword.first,{'attr': {'class':''}})}}{{ form_errors(form.plainPassword.first)}}
-                        <br>
-                        {{ form_label(form.plainPassword.second)}}{{ form_widget(form.plainPassword.second,{'attr': {'class':''}})}}{{ form_errors(form.plainPassword.second)}}<br>
-                        <br>
-                        {{ form_label(form.role)}}{{ form_widget(form.role,{'attr': {'class':'form-control'}})}}{{ form_errors(form.role)}}<br>
-                        {{ form_label(form.compte)}}{{ form_widget(form.compte,{'attr': {'class':'form-control'}})}}{{ form_errors(form.compte)}}<br>
-                        {{ form_label(form.numPermis)}}{{ form_widget(form.numPermis,{'attr': {'class':'form-control'}})}}{{ form_errors(form.compte)}}<br>
-                        {{form_rest(form)}}
-                        <div>
-                        </div>
-                        <br>
-                        <div>
-                            <input type="submit" value="{{ 'registration.submit'|trans }}" id="valider"/>
-                        </div>
-                    </form>
+                            {{ form_label(form.username) }} {{ form_widget(form.username,{'attr': {'class':'form-control','value':''}})}}{{ form_errors(form.username)}}<br>
+                            <br>
+                            {{ form_label(form.plainPassword.first)}}{{ form_widget(form.plainPassword.first,{'attr': {'class':''}})}}{{ form_errors(form.plainPassword.first)}}
+                            <br>
+                            {{ form_label(form.plainPassword.second)}}{{ form_widget(form.plainPassword.second,{'attr': {'class':''}})}}{{ form_errors(form.plainPassword.second)}}<br>
+                            <br>
+                            {{ form_label(form.role)}}{{ form_widget(form.role,{'attr': {'class':'form-control'}})}}{{ form_errors(form.role)}}<br>
+                            {{ form_label(form.compte)}}{{ form_widget(form.compte,{'attr': {'class':'form-control'}})}}{{ form_errors(form.compte)}}<br>
+                            {{ form_label(form.numPermis)}}{{ form_widget(form.numPermis,{'attr': {'class':'form-control'}})}}{{ form_errors(form.compte)}}<br>
+
+                            {{ form_label(form.matriculeVoiture)}}{{ form_widget(form.matriculeVoiture,{'attr': {'class':'form-control'}})}}{{ form_errors(form.matriculeVoiture)}}<br>
+                            {{ form_label(form.modeleVoiture)}}{{ form_widget(form.modeleVoiture,{'attr': {'class':'form-control'}})}}{{ form_errors(form.modeleVoiture)}}<br>
+                            
+                            <br>
+                            <input type="submit" value="{{ 'registration.submit'|trans }}" id="valider votre inscription"/>
+                            {{form_rest(form)}}
+                        </form>  
+                        <br><br><br>
+
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-
+                        </div>
+    </html>
 {% endblock body %}

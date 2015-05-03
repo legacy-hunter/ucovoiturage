@@ -72,47 +72,18 @@ class __TwigTemplate_5fd3f0e8a064b6c6b8a4a747f2c2c95dda2a002fef90f5275776cf036aa
         </head>
         <body>
             <div class=\"container\">
-                <div class=\"row\">
-                    ";
-        // line 38
-        if ($this->env->getExtension('security')->isGranted("IS_AUTHENTICATED_REMEMBERED")) {
-            // line 39
-            echo "                        ";
-            echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("layout.logged_in_as", array("%username%" => $this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "user", array()), "username", array())), "FOSUserBundle"), "html", null, true);
-            echo " |
-                        <a href=\"";
-            // line 40
-            echo $this->env->getExtension('routing')->getPath("fos_user_security_logout");
-            echo "\">
-                            ";
-            // line 41
-            echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("layout.logout", array(), "FOSUserBundle"), "html", null, true);
-            echo "
-                        </a>
-                    ";
-        } else {
-            // line 44
-            echo "                        <a href=\"";
-            echo $this->env->getExtension('routing')->getPath("fos_user_security_login");
-            echo "\">";
-            echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("layout.login", array(), "FOSUserBundle"), "html", null, true);
-            echo "</a>
-                    ";
-        }
-        // line 46
-        echo "                </div>
-                <div class=\"row\">
-
+                
+                
                     <div class=\"row\">
-                        <br> 
+                        <br><br>
                         ";
-        // line 51
+        // line 41
         $this->env->loadTemplate("::menu_profil.html.twig")->display($context);
         echo " 
-                        <div class=\"col-lg-6\">
+                        <div class=\"col-lg-4\">
                             <div class=\"form-group\">
                                 <form  method=\"POST\" class=\"\" action=\"";
-        // line 54
+        // line 44
         echo $this->env->getExtension('routing')->getPath("valider_modif_profil");
         echo "\">
                                     <label for=\"choix\">choisir role :</label><br>
@@ -122,9 +93,9 @@ class __TwigTemplate_5fd3f0e8a064b6c6b8a4a747f2c2c95dda2a002fef90f5275776cf036aa
                                         <option value=\"all\">passager & conducteur</option>
                                     </select><br><br>  
                                     <label for=\"numCompte\" id=\"label_numCompte\">numero de compte : </label>
-                                    <input id=\"numCompte\" name=\"numCompte\" type=\"text\" class=\"form-control\"/> 
+                                    <input id=\"numCompte\" name=\"numCompte\" type=\"text\" class=\"form-control\" style=\"width: 400px;\"/> 
                                     <label for=\"numPermis\" id=\"label_numPermis\">numero du permis :</label>
-                                    <input id=\"numPermis\" name=\"numPermis\" type=\"text\" class=\"form-control\"/> 
+                                    <input id=\"numPermis\" name=\"numPermis\" type=\"text\" class=\"form-control\" style=\"width: 400px;\"/> 
                                     <br>
                                     <input type =\"submit\" value= \"valider\"/>
                                 </form>
@@ -133,7 +104,7 @@ class __TwigTemplate_5fd3f0e8a064b6c6b8a4a747f2c2c95dda2a002fef90f5275776cf036aa
 
                         </div>
                     </div>
-                </div>
+                
 
         </body>
     </html>
@@ -152,6 +123,6 @@ class __TwigTemplate_5fd3f0e8a064b6c6b8a4a747f2c2c95dda2a002fef90f5275776cf036aa
 
     public function getDebugInfo()
     {
-        return array (  116 => 54,  110 => 51,  103 => 46,  95 => 44,  89 => 41,  85 => 40,  80 => 39,  78 => 38,  43 => 6,  36 => 3,  11 => 2,);
+        return array (  87 => 44,  81 => 41,  43 => 6,  36 => 3,  11 => 2,);
     }
 }

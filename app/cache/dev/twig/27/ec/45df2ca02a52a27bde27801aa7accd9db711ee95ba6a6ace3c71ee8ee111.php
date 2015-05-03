@@ -36,68 +36,160 @@ class __TwigTemplate_27ec45df2ca02a52a27bde27801aa7accd9db711ee95ba6a6ace3c71ee8
     public function block_body($context, array $blocks = array())
     {
         // line 6
-        echo "
-<h4>Details de l'opération</h4>
-<p>Article publié par ";
-        // line 8
+        echo "    <div class=\"container\"> 
+        <div class=\"panel panel-info\">
+
+            <div class=\"panel-heading\">
+                <CENTER><h4>Details de l'opération</h4></CENTER>
+            </div>\t
+
+            <table class = \"table table-striped table-hover table-bordered table-condensed\">
+                <tr>\t
+                    <th> </th>
+
+                    <th> </th>
+
+
+                </tr>
+
+                <tr >
+                    <td><p>Article publié par : </p></td>
+
+                    <td><p>";
+        // line 25
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["user"]) ? $context["user"] : $this->getContext($context, "user")), "nom", array()), "html", null, true);
         echo " ";
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["user"]) ? $context["user"] : $this->getContext($context, "user")), "prenom", array()), "html", null, true);
-        echo "</p> <br>
-<p>Date de l'opération : ";
-        // line 9
+        echo "</p> </td>
+
+
+                </tr>
+                <tr>
+                    <td> <p>Date de l'opération : </p></td>
+
+                    <td><p>";
+        // line 32
         echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute((isset($context["annonce"]) ? $context["annonce"] : $this->getContext($context, "annonce")), "dateDepart", array()), "Y-m-d"), "html", null, true);
-        echo "</p><br>
-<p>Prix de l'opération :  ";
-        // line 10
+        echo "</p></td>
+
+
+                </tr>
+                <tr>
+                    <td><p>Prix de l'opération : </p></td>
+
+                    <td><p> ";
+        // line 39
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["annonce"]) ? $context["annonce"] : $this->getContext($context, "annonce")), "prix", array()), "html", null, true);
-        echo "</p><br>
-Quelques précisons de l'auteur : <br>
-<p>";
-        // line 12
-        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["annonce"]) ? $context["annonce"] : $this->getContext($context, "annonce")), "precisions", array()), "html", null, true);
-        echo "</p>
-<form action =\"";
-        // line 13
+        echo "</p></td>
+                </tr>
+                ";
+        // line 41
+        if ($this->getAttribute((isset($context["annonce"]) ? $context["annonce"] : null), "precisions", array(), "any", true, true)) {
+            // line 42
+            echo "                <tr>
+                    <td>Quelques précisons de l'auteur :</td>
+
+                    <td><p>";
+            // line 45
+            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["annonce"]) ? $context["annonce"] : $this->getContext($context, "annonce")), "precisions", array()), "html", null, true);
+            echo "</p></td>
+
+                </tr>
+                ";
+        }
+        // line 49
+        echo "                
+                ";
+        // line 50
+        if (array_key_exists("etapes", $context)) {
+            // line 51
+            echo "                    ";
+            $context["i"] = 0;
+            // line 52
+            echo "                    ";
+            $context['_parent'] = (array) $context;
+            $context['_seq'] = twig_ensure_traversable((isset($context["etapes"]) ? $context["etapes"] : $this->getContext($context, "etapes")));
+            foreach ($context['_seq'] as $context["_key"] => $context["etape"]) {
+                // line 53
+                echo "                        ";
+                $context["i"] = ((isset($context["i"]) ? $context["i"] : $this->getContext($context, "i")) + 1);
+                // line 54
+                echo "                    <tr>
+                        <td> etape ";
+                // line 55
+                echo twig_escape_filter($this->env, (isset($context["i"]) ? $context["i"] : $this->getContext($context, "i")), "html", null, true);
+                echo " :</td>
+                        <td>";
+                // line 56
+                echo twig_escape_filter($this->env, $this->getAttribute($context["etape"], "ville", array()), "html", null, true);
+                echo "<td>
+                    </tr>
+                    ";
+            }
+            $_parent = $context['_parent'];
+            unset($context['_seq'], $context['_iterated'], $context['_key'], $context['etape'], $context['_parent'], $context['loop']);
+            $context = array_intersect_key($context, $_parent) + $_parent;
+            // line 59
+            echo "                    ";
+        }
+        // line 60
+        echo "            </table>   
+        </div>
+        <center>
+            
+                <div class=\"panel panel-primary\">
+
+                    <div class=\"panel-heading\">
+                        <CENTER><h4>Details de l'opération</h4></CENTER>
+                    </div>  
+
+                    <form action =\"";
+        // line 70
         echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("envoi_res", array("id" => $this->getAttribute((isset($context["annonce"]) ? $context["annonce"] : $this->getContext($context, "annonce")), "id", array()))), "html", null, true);
         echo "\" method=\"POST\">
-    <label for=\"comment\">Commentaire : </label><br>
-    <textarea id=\"comment\" name=\"comment\"></textarea><br>
-    <input type='submit' value='Effectuer reservation'/>
-</form>
-    <br>Envoyer un message ...<br>
-<form action='";
-        // line 19
-        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("send_message", array("id" => $this->getAttribute((isset($context["annonce"]) ? $context["annonce"] : $this->getContext($context, "annonce")), "id", array()))), "html", null, true);
-        echo "' method='POST' class=\"form-group\">
-    <label for='sender'>Votre email : </label><br>
-        <input type='text' id='sender_mail' name='sender_mail'/><br>
-        <label for='objet'>objet : </label><br>
-        <input type='text' id='object' name='objet'><br>
-        <label for='message'>Votre message : </label><br>
-        <textarea id='message' rows='8' cols='45' name=\"message\"></textarea><br>
-        <input type='submit' value='Envoyer message'/>
-</form>
 
-            ";
-        // line 29
+
+                        <table class = \"table table-striped table-hover table-bordered table-condensed\">
+                            <tr>\t
+                                <td><label for=\"comment\">Commentaire : </label></td>
+
+                                <td><textarea id=\"comment\" name=\"comment\"></textarea><br> </td>
+                            </tr>
+                            <tr>    
+                                <td> </td>
+                                <td> <input type='submit' class=\"btn btn-primary .btn-lg\" value='Effectuer reservation'/> </td>
+                            </tr> 
+
+                        </table>        
+
+                    </form>
+                </div> 
+                    
+        </center> 
+
+
+        <br>
+
+
+        ";
+        // line 95
         $context['_parent'] = (array) $context;
         $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "session", array()), "flashbag", array()), "get", array(0 => "success"), "method"));
         foreach ($context['_seq'] as $context["_key"] => $context["flashMessage"]) {
-            // line 30
-            echo "                <div class=\"alert alert-success\">
-                    ";
-            // line 31
+            // line 96
+            echo "            <div class=\"alert alert-success\">
+                ";
+            // line 97
             echo twig_escape_filter($this->env, $context["flashMessage"], "html", null, true);
             echo "
-                </div>
-            ";
+            </div>
+        ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['flashMessage'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 34
-        echo "
+        // line 100
+        echo "    </div>
 ";
     }
 
@@ -113,6 +205,6 @@ Quelques précisons de l'auteur : <br>
 
     public function getDebugInfo()
     {
-        return array (  100 => 34,  91 => 31,  88 => 30,  84 => 29,  71 => 19,  62 => 13,  58 => 12,  53 => 10,  49 => 9,  43 => 8,  39 => 6,  36 => 5,  11 => 3,);
+        return array (  192 => 100,  183 => 97,  180 => 96,  176 => 95,  148 => 70,  136 => 60,  133 => 59,  124 => 56,  120 => 55,  117 => 54,  114 => 53,  109 => 52,  106 => 51,  104 => 50,  101 => 49,  94 => 45,  89 => 42,  87 => 41,  82 => 39,  72 => 32,  60 => 25,  39 => 6,  36 => 5,  11 => 3,);
     }
 }

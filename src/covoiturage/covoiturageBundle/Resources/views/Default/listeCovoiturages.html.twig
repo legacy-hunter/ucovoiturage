@@ -1,26 +1,151 @@
 {# empty Twig template #}
 
 {% extends '::base.html.twig' %}
-
 {% block body %}
+<html>
+        <head>
+             <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+           <link href="{{asset('bundles/ucovoiturage/css/jquery-ui-1.8.12.custom.css')}}" rel="stylesheet"/>  
+           
+    <style type="text/css">
+    .container #map{width:600px;height:300px;}
+    .container #panel{width:400px;height:200px;
+     border: 0px solid #333333 ;  overflow: auto;  text-align: left; font-size: 9px;}
+   
+  </style>
+        </head>
 
-<h4><h4>
- <table>   
-     <tbody>
-         
-{% for annonce in annonces %}
-    {% if( annonce.dateDepart|date('Y-m-d') >= 'now'|date('Y-m-d') ) and (annonce.nbPlace != 0)%}
-    <tr>
-        
-        <td>Lieu de depart : &nbsp;{{ annonce.lieuDepart}} &nbsp;</td>
-        <td> Lieu d'arrivé : &nbsp;{{ annonce.lieuArrive}} &nbsp;</td>
-        <td>Nombres de places : &nbsp;{{ annonce.nbPlace}} &nbsp;</td>
-        <td>Prix :&nbsp; {{annonce.prix}} &nbsp;</td>
-        <td>date : &nbsp;{{annonce.dateDepart|date('Y-m-d H:i:s')}} &nbsp;<td>
-        <td><a href="{{ path('details_annonce', { 'id' : annonce.id })}}"> > Lire l'annonce</a>
-    </tr>
-    {% endif %}
+    <body onload = "initAutocomplete();">
+
+        <div class="container">
+            
+        <div class="row">
+            <br>
+        </div>
+<div class="row">
+    <div class="col-lg-4">
+         {% for flashMessage in app.session.flashbag.get('rech_msg') %}
+                <div class="alert alert-success">
+                    {{ flashMessage }}
+                </div>
+            {% endfor %}
+        <form action="{{path('liste_covoiturages')}}" method="POST">
+            <label for="origin">ville de départ :</label><br>
+            <input type="text" name="origin" id="origin" class="form-control" style=" width: 300px;"><br>
+        <label for="destination">ville d'arrive :</label><br>
+        <input type="text" name="destination" id="destination" class="form-control" style=" width: 300px;"><br>
+        <label for="dateRech">Date de depart :</label><br>
+        <div class="input-group date form_date col-md-1"  data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+            <input type='text' name='dateRech' id='dateRech' style=" width: 260px;" readonly="true" >
+            <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+        </div><br>
+        <input type="submit" value="rechercher" class="btn-success" />
+    </form>
+            
+    </div>
+              
+           
+                <div id="map">     
+                </div>
+           
+              <img src="{{ asset('bundles/ucovoiturage/images/bird.png')}}"  width="100" height="100">
+              <br><br>
+</div>
+        <div class="row" >        
+    <div class="panel panel-success">
+        <div class="panel-heading"><CENTER><h4>Liste de covoiturage<h4></CENTER></div>
+
+                        <!--strat of the big table  class="table table-striped table-hover table-bordered table-condensed"-->
+                        <table class="table table-striped table-hover table-bordered table-condensed" border="0">   
+                            <tbody>
+
+                                {% for annonce in annoncesPag %}
+                                    
+                                        <tr>
+                                            <td>
+                                                <!--begine of table 1-->
+                                                <table class="table table-striped table-hover table-condensed">
+                                                    <tbody>
+                                                        <tr>
+                                                            <td width="100px" align="left" rowspan="0"><!---->
+                                                                <div class="media">
+                                                                    {%if annonce.role == "conducteur"%}
+                                                                        {%if annonce.utilisateur.sexe == '0'%}
+                                                                    <a class="pull-left" href="#">
+                          
+                                                                        <img class="media-object" src="{{asset('bundles/ucovoiturage/images/carwoman.png')}}"alt="Media Object">
+                                                                    </a> 
+                                                                        {%else%}
+                                                                        <img class="media-object" src="{{asset('bundles/ucovoiturage/images/carman.png')}}"alt="Media Object">
+                                                                            {%endif%}
+                                                                            {%else%}
+                                                                                {%if annonce.utilisateur.sexe == '0'%}
+                                                                             <img class="media-object" src="{{asset('bundles/ucovoiturage/images/woman.png')}}"alt="Media Object">   
+                                                                                {%else%}
+                                                                             <img class="media-object" src="{{asset('bundles/ucovoiturage/images/man.png')}}"alt="Media Object">
+                                                                             {%endif%}
+                                                                    {%endif%}
+                                                                </div>    
+                                                            </td>
+                                                            <td><!--width="200px" height="25"-->
+                                                                Nom:
+                                                            </td>
+                                                            <td>{{annonce.utilisateur.nom}} {{annonce.utilisateur.prenom}}</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td>
+                                                                <strong>Nombres de places: </strong>
+                                                            </td>
+
+                                                            <td>
+                                                                <strong align="center"> {{ annonce.nbPlace}}</strong>
+                                                                place(s)
+                                                            </td>
+
+
+                                                        </tr>
+                                                    </tbody>  
+                                                </table>    
+                                            </td> 
+                                            <!--end of table 1-->
+
+                                            <!-- begine of table 2-->
+
+                                            <td>
+                                                Lieu de depart : &nbsp;{{ annonce.lieuDepart}}</br>
+                                                Lieu d'arrivé : &nbsp;{{ annonce.lieuArrive}}</br>
+                                                <p class="gros2">{{annonce.dateDepart|date('Y-m-d H:i:s')}}</p>
+                                                <a href="{{ path('details_annonce', { 'id' : annonce.id })}}"> Lire l'annonce</a>
+                                            </td>
+
+                                            <td  align="center">
+                                                <span class="gros">
+                                                    <strong>Prix :&nbsp; {{annonce.prix}}dt </strong>
+                                                </span>
+                                                </br>
+                                                par passager
+                                            </td>
+                                        </tr>
 {% endfor %}
-     </tbody>
-   </table>
-    {% endblock %}
+                                    </tbody>
+                                </table>
+
+                                </div>      
+                                    {{ knp_pagination_render(annoncesPag) }}
+                                </div> 
+                                </div>
+
+                                
+                       
+                        <br><br><br><br><br><br><br><br>
+                        
+                        
+    <script type="text/javascript"  src="{{asset('bundles/ucovoiturage/plugins/jquery-1.10.2.js')}}"></script>
+    <script type="text/javascript"  src="{{asset('bundles/ucovoiturage/js/jquery.min.js')}}"></script>
+    <script type="text/javascript"  src="{{asset('bundles/ucovoiturage/js/jquery-ui-1.8.12.custom.min.js')}}"></script>
+    <script type="text/javascript"  src="http://maps.google.com/maps/api/js?sensor=false&language=fr"></script>
+    <script type="text/javascript"  src="https://maps.googleapis.com/maps/api/js?sensor=false&libraries=places"></script> 
+    <script type="text/javascript"  src="{{asset('bundles/ucovoiturage/js/functions.js')}}"></script>
+    </body>           
+</html>
+                    {% endblock %}

@@ -7,19 +7,19 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 use FOS\MessageBundle\Model\ParticipantInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * 
  * @ORM\Entity(repositoryClass="Utilisateurs\UtilisateursBundle\Repository\UtilisateursRepository")
  * @ORM\Table(name="utilisateur")
  * @UniqueEntity(fields="matricule", message="Ce matricule existe déjà ")
- * @UniqueEntity(fields="cin", message="Ce cin déjà ")
+ * @UniqueEntity(fields="cin", message="Ce cin existe déjà ")
  * @UniqueEntity(fields="numPermis", message="Ce numero de permis existe déjà ")
  * @UniqueEntity(fields="compte", message="Ce numero de compte existe déjà ")
  */
 class Utilisateurs extends BaseUser implements ParticipantInterface
 {
-    
     
     /**
      * @ORM\Id
@@ -78,12 +78,23 @@ class Utilisateurs extends BaseUser implements ParticipantInterface
      * @var string $nom
      *
      * @ORM\Column(name="nom", type="string", length=255)
+     * 
+     *     @Assert\Regex(
+     *     pattern= "/[a-zA-Z -]/",
+     *     match=true,
+     *     message="Donnez un prenom valide"
+     * )
      */
     private $nom;
      /**
      * @var string $prenom
      *
      * @ORM\Column(name="prenom", type="string", length=255)
+     *   @Assert\Regex(
+     *     pattern= "/[a-zA-Z -]/",
+     *     match=true,
+     *     message="Donnez un prenom valide"
+     * )
      */
      private $prenom;
      
@@ -94,15 +105,22 @@ class Utilisateurs extends BaseUser implements ParticipantInterface
      */ 
     private $sexe;
      /**
-     * @var integer $telephone
-     *
-     * @ORM\Column(name="telephone", type="integer", length=11)
+     * @var string $telephone
+     * @Assert\Regex(
+     *     pattern="/[0-9]/",
+     *     match=true,
+     *     message="Votre contact doit etre numerique"
+     * )
+     * @ORM\Column(name="telephone", type="string", length=11)
      */
     private $telephone;
     
     /**
      * @var string $ville
-     *
+     * @Assert\Regex(
+     *     pattern= "/[a-zA-Z -]/",
+     *     match=true,
+     *     message="Donnez une ville valide")
      * @ORM\Column(name="ville", type="string", length=255)
      */
     private $ville;
@@ -114,16 +132,24 @@ class Utilisateurs extends BaseUser implements ParticipantInterface
      */
     private $role;
     /**
-     * @var integer $numPermis
-     *
-     * @ORM\Column(name="numPermis",nullable = true,type="integer", length=20)
+     * @var string $numPermis
+     *@Assert\Regex(
+     *     pattern="/[0-9]/",
+     *     match=true,
+     *     message="Votre contact doit etre numerique"
+     * )
+     * @ORM\Column(name="numPermis",nullable = true,type="string", length=20)
      */
     private $numPermis;
     
     /**
-     * @var integer $compte
-     *
-     * @ORM\Column(name="compte",nullable = true, type="integer", length=50)
+     * @var string $compte
+     *@Assert\Regex(
+     *     pattern="/[0-9]/",
+     *     match=true,
+     *     message="Votre contact doit etre numerique"
+     * )
+     * @ORM\Column(name="compte",nullable = true, type="string", length=50)
      */
     private $compte;
     
@@ -135,23 +161,50 @@ class Utilisateurs extends BaseUser implements ParticipantInterface
     
     
      /**
-     * @var integer $matricule
-     *
-     * @ORM\Column(name="matricule", type="integer", length=6,unique=true)
+     * @var string $matricule
+     *@Assert\Regex(
+     *     pattern="/[0-9]/",
+     *     match=true,
+     *     message="Donnez un matricule valide"
+     * )
+     * @ORM\Column(name="matricule", type="string", length=6,unique=true)
      *
      */
     
     private $matricule;
     
      /**
-     * @var integer $cin
-     *
-     * @ORM\Column(name="cin", type="integer", length=50 )
+     * @var string $cin
+     *@Assert\Regex(
+     *     pattern="/[0-9 a-zA-Z]/",
+     *     match=true,
+     *     message="Donnez un cin ou numero passport valide"
+     * )
+     * @ORM\Column(name="cin", type="string", length=50 )
      */
     
     private $cin;
     
-     
+    /**
+     * @var string $modeleVoiture
+     *
+     * @ORM\Column(name="modeleVoiture", type="string", length=255,nullable=true)
+     * 
+     *    
+     */
+    private $modeleVoiture;
+    
+    /**
+     * @var string $matriculeVoiture
+     *@Assert\Regex(
+     *     pattern="/[0-9]/",
+     *     match=true,
+     *     message="Donnez un matricule de voiture valide"
+     * )
+     * @ORM\Column(name="matriculeVoiture", type="string", length=10,unique=true,nullable=true)
+     *
+     */
+    private $matriculeVoiture;
     
     
     function getId() {
@@ -413,5 +466,51 @@ class Utilisateurs extends BaseUser implements ParticipantInterface
     public function getCommentaires()
     {
         return $this->commentaires;
+    }
+
+    /**
+     * Set modeleVoiture
+     *
+     * @param string $modeleVoiture
+     * @return Utilisateurs
+     */
+    public function setModeleVoiture($modeleVoiture)
+    {
+        $this->modeleVoiture = $modeleVoiture;
+
+        return $this;
+    }
+
+    /**
+     * Get modeleVoiture
+     *
+     * @return string 
+     */
+    public function getModeleVoiture()
+    {
+        return $this->modeleVoiture;
+    }
+
+    /**
+     * Set matriculeVoiture
+     *
+     * @param string $matriculeVoiture
+     * @return Utilisateurs
+     */
+    public function setMatriculeVoiture($matriculeVoiture)
+    {
+        $this->matriculeVoiture = $matriculeVoiture;
+
+        return $this;
+    }
+
+    /**
+     * Get matriculeVoiture
+     *
+     * @return string 
+     */
+    public function getMatriculeVoiture()
+    {
+        return $this->matriculeVoiture;
     }
 }

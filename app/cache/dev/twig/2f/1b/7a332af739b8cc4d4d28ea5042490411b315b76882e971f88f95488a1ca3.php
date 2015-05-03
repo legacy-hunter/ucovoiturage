@@ -36,41 +36,75 @@ class __TwigTemplate_2f1b7a332af739b8cc4d4d28ea5042490411b315b76882e971f88f95488
     public function block_fos_user_content($context, array $blocks = array())
     {
         // line 6
-        echo "<div class=\"row\">
-<div class=\"col-lg-4\">
-    <div class=\"row\">
-        <div class=\"col-lg-4\">      
-        
-        </div>
-    </div>
-</div>
-     <div class=\"col-lg-8\">
-      <h2>Connexion</h2>
-      </div>
-</div>
+        echo "    <div class=\"container\">
 <div class=\"row\">
-    <div class=\"col-lg-9\">
+<div class=\"col-lg-4\">
    
 </div>
-<div class=\"col-lg-3 col\">
+    <div class=\"col-lg-8\" style=\"height: 100px; width: 100px;\">
+      
+      
+       ";
+        // line 14
+        $context['_parent'] = (array) $context;
+        $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "session", array()), "flashbag", array()), "get", array(0 => "notif"), "method"));
+        foreach ($context['_seq'] as $context["type"] => $context["messages"]) {
+            // line 15
+            echo "            ";
+            $context['_parent'] = (array) $context;
+            $context['_seq'] = twig_ensure_traversable($context["messages"]);
+            foreach ($context['_seq'] as $context["_key"] => $context["message"]) {
+                // line 16
+                echo "                <div class=\"flash-";
+                echo twig_escape_filter($this->env, $context["type"], "html", null, true);
+                echo "\">
+                    <strong style=\"color: blue;\"> ";
+                // line 17
+                echo twig_escape_filter($this->env, $context["message"], "html", null, true);
+                echo " </strong>
+                </div>
+            ";
+            }
+            $_parent = $context['_parent'];
+            unset($context['_seq'], $context['_iterated'], $context['_key'], $context['message'], $context['_parent'], $context['loop']);
+            $context = array_intersect_key($context, $_parent) + $_parent;
+            // line 20
+            echo "        ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['type'], $context['messages'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 21
+        echo "      </div>
+</div>
+<div class=\"row\">
+    <div class=\"col-lg-8 col-md-push-2\" style=\"width: 500px;\">
+               
+    <img src=\"";
+        // line 26
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/ucovoiturage/images/image_login.jpeg"), "html", null, true);
+        echo "\"  width=\"200\" height=\"200\">
+           
+</div>
+<div class=\"col-lg-3 col col-md-push-3\">
 <div class=\"form-group\">
 <form action=\"";
-        // line 24
+        // line 31
         echo $this->env->getExtension('routing')->getPath("fos_user_security_check");
         echo "\" method=\"post\" class=\"form-group-lg\">
      
     <input type=\"hidden\" name=\"_csrf_token\" value=\"";
-        // line 26
+        // line 33
         echo twig_escape_filter($this->env, (isset($context["csrf_token"]) ? $context["csrf_token"] : $this->getContext($context, "csrf_token")), "html", null, true);
         echo "\" />
     <div class=\"form-group\">
     <label for=\"username\">";
-        // line 28
+        // line 35
         echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("security.login.username", array(), "FOSUserBundle"), "html", null, true);
         echo "</label>
     <div class=\"input-group\">
     <input type=\"text\" id=\"username\" name=\"_username\" value=\"";
-        // line 30
+        // line 37
         echo twig_escape_filter($this->env, (isset($context["last_username"]) ? $context["last_username"] : $this->getContext($context, "last_username")), "html", null, true);
         echo "\" required=\"required\" placeholder=\"\"class=\"form-control\"/>
     </div>
@@ -78,7 +112,7 @@ class __TwigTemplate_2f1b7a332af739b8cc4d4d28ea5042490411b315b76882e971f88f95488
     <br>
    
     <label for=\"password\">";
-        // line 35
+        // line 42
         echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("security.login.password", array(), "FOSUserBundle"), "html", null, true);
         echo "</label>
     <div class=\"input-group\">
@@ -88,37 +122,38 @@ class __TwigTemplate_2f1b7a332af739b8cc4d4d28ea5042490411b315b76882e971f88f95488
     <div>
     <input type=\"checkbox\" id=\"remember_me\" name=\"_remember_me\" value=\"on\" />
     <label for=\"remember_me\">";
-        // line 42
+        // line 49
         echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans("security.login.remember_me", array(), "FOSUserBundle"), "html", null, true);
         echo "</label>
     </div> <br> 
     <input class=\"btn btn-primary\" type=\"submit\" value=\"envoyer\"/> <br><br>
     
     ";
-        // line 46
+        // line 53
         if ((isset($context["error"]) ? $context["error"] : $this->getContext($context, "error"))) {
-            // line 47
+            // line 54
             echo "    <div>";
             echo twig_escape_filter($this->env, $this->env->getExtension('translator')->trans($this->getAttribute((isset($context["error"]) ? $context["error"] : $this->getContext($context, "error")), "messageKey", array()), $this->getAttribute((isset($context["error"]) ? $context["error"] : $this->getContext($context, "error")), "messageData", array()), "security"), "html", null, true);
             echo "</div>
     ";
         }
-        // line 49
+        // line 56
         echo "  
 </form>
     <a href=\"";
-        // line 51
+        // line 58
         echo $this->env->getExtension('routing')->getPath("fos_user_registration_register");
         echo "\">Pas de compte ?</a> <br>
     <a href=\"";
-        // line 52
+        // line 59
         echo $this->env->getExtension('routing')->getPath("fos_user_resetting_request");
         echo "\">Mot de passe perdu ?</a>
    </div> 
      
 </div>
-    
+   
 </div>
+    </div>
 ";
     }
 
@@ -134,6 +169,6 @@ class __TwigTemplate_2f1b7a332af739b8cc4d4d28ea5042490411b315b76882e971f88f95488
 
     public function getDebugInfo()
     {
-        return array (  115 => 52,  111 => 51,  107 => 49,  101 => 47,  99 => 46,  92 => 42,  82 => 35,  74 => 30,  69 => 28,  64 => 26,  59 => 24,  39 => 6,  36 => 5,  11 => 1,);
+        return array (  149 => 59,  145 => 58,  141 => 56,  135 => 54,  133 => 53,  126 => 49,  116 => 42,  108 => 37,  103 => 35,  98 => 33,  93 => 31,  85 => 26,  78 => 21,  72 => 20,  63 => 17,  58 => 16,  53 => 15,  49 => 14,  39 => 6,  36 => 5,  11 => 1,);
     }
 }

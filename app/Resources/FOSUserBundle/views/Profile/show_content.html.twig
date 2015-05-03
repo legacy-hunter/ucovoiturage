@@ -1,13 +1,26 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
 <div class="fos_user_user_show">
+    
     <p>{{ 'profile.show.username'|trans }}: {{ user.username }}</p>
     <p>{{ 'profile.show.email'|trans }}: {{ user.email }}</p>
     {% if (user.role == 0)%}
         <p>mon rôle : conducteur</p>
+        <p>compte : {{user.compte}}</p>
+        <p>matricule : {{user.matricule}}</p>
+        <p>numero de permis: {{user.numPermis}}</p>
+        <p>modele Voiture : {{user.modeleVoiture}}</p>
+        <p>matricule Voiture : {{user.matriculeVoiture}}</p>
        {%elseif user.role == 2%}
-          <p>mon rôle : passager & conducteur</p> 
+         <p>mon rôle : passager & conducteur</p>  
+        <p>mon rôle : conducteur</p>
+        <p>compte : {{user.compte}}</p>
+        <p>matricule : {{user.matricule}}</p>
+        <p>numero de permis: {{user.numPermis}}</p>
+        <p>modele Voiture : {{user.modeleVoiture}}</p>
+        <p>matricule Voiture : {{user.matriculeVoiture}}</p>
           {% else %}
            <p>mon rôle : passager </p>
+           <p>matricule : {{user.matricule}}</p>
     {% endif%}
 </div>

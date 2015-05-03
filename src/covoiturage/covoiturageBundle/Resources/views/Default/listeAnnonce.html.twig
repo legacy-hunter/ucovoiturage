@@ -1,16 +1,30 @@
 {# empty Twig template #}
 {% extends '::base.html.twig' %}
+
 {% block body -%}
-    <div class="col-xs-12 col-sm-10 col-md-6"> 
-<table  table table-bordered table-striped table-hover>
+    <html>
+        <head>
+ <style type="text/css">
+.tg {border-collapse:collapse;border-spacing:0;border-color:#aabcfe;}
+.tg td{font-family:Arial, sans-serif;font-size:14px;padding:8px 9px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#aabcfe;color:#669;background-color:#e8edff;border-top-width:1px;border-bottom-width:1px;}
+.tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:8px 9px;border-style:solid;border-width:0px;overflow:hidden;word-break:normal;border-color:#aabcfe;color:#039;background-color:#b9c9fe;border-top-width:1px;border-bottom-width:1px;}
+.tg .tg-733k{font-family:"Lucida Sans Unicode", "Lucida Grande", sans-serif !important;}
+</style>
+        </head>
+        <body>
+    
+        <CENTER>
+    
+            <table  class="tg">
     <thead>
         <tr>
-            <th>Départs</th>
-            <th>Arrivés</th>
-            <th>Date de l'opération</th>
-            <th>Prix</th>
-            <th>Places disponibles</th>
-            <th>Detaïls de l'opération</th>
+            <th class="tg-733k">Départs</th>
+            <th class="tg-031e" >Arrivés</th>
+            <th class="tg-031e">Date de l'opération</th>
+            <th class="tg-031e" >Prix</th>
+            <th class="tg-031e" >Places disponibles</th>
+            <th class="tg-031e">Detaïls de l'opération</th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -18,17 +32,18 @@
       <tr>
           <td>{{annonce.lieuDepart}}</td>
           <td>{{annonce.lieuArrive}}</td>
-          <td>{% if annonce.dateDepart %}{{ annonce.dateDepart|date('Y-m-d H:i:s') }}{% endif %}</td>
+          <td>{% if annonce.dateDepart %}{{ annonce.dateDepart|date('Y-m-d H:i:s')}}{% endif %}</td>
           <td>{{annonce.prix}}</td>
           <td>{{annonce.nbPlace}}</td>
           <td>{{annonce.precisions}}</td>
-          <td><a  href="{{ path('gestion_annonce_edit', { 'id': annonce.id }) }}">modifier</a></td>
-          <td><a href="{{path('supprimer_annonce',{ 'id': annonce.id })}}" onclick="return confirm('are u sure?');">supprimer</a></td>
-          <td><a href="{{path('form_etape',{ 'id': annonce.id })}}">Ajouter une etape</a></td>
-        
+          <td><a href="{{path('form_etape',{ 'id': annonce.id })}}"><span class="glyphicons glyphicon glyphicon-plus"></span></a> <a  href="{{ path('gestion_annonce_edit', { 'id': annonce.id }) }}"> <span class="glyphicons glyphicon glyphicon-edit"></span></a>  <a href="{{path('supprimer_annonce',{ 'id': annonce.id })}}" onclick="return confirm('are u sure?');"><span class="glyphicons glyphicon glyphicon-remove" style=""></span> </a></td>
+          <td></td>
+          <td></td>
       </tr>
 {%endfor%}
     </tbody>
 </table>
-    </div>
+        </CENTER>
+        </body>
+    </html>
 {%endblock%}

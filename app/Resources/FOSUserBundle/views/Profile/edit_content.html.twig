@@ -1,27 +1,28 @@
 {% trans_default_domain 'FOSUserBundle' %}
 <div class="container">
     <div class="row">
+              {% include '::menu_profil.html.twig'%} 
+        <div class="col-lg-4">
     <div class="form-group">
-<form action="{{ path('fos_user_profile_edit') }}" {{ form_enctype(form) }} method="POST" class="fos_user_profile_edit">
-      <div class="form-group">  
-  {{ form_label(form.username)}} 
-  
-  {{ form_widget(form.username ,{'attr': {'class':'form-control'}})}} 
- 
-  {{ form_errors(form.username)}}
-  
-      </div>
-        <div class="form-group">  
-  {{ form_label(form.email)}} {{ form_widget(form.email,{'attr': {'class':'form-control'}}) }}  {{ form_errors(form.email)}}
-        </div>
-          <div class="form-group">  
-     {{ form_row(form.current_password,{'attr': {'class':'form-control'}}) }}
-          </div>
-     {{form_rest(form)}}
-    <div>
+      <form action="{{ path('fos_user_profile_edit') }}" {{ form_enctype(form) }} method="POST" class="fos_user_profile_edit">
+   {{ form_label(form.username) }} {{ form_widget(form.username,{'attr': {'class':'form-control'}})}}{{ form_errors(form.username) }}<br>
+   {{ form_label(form.ville) }} {{ form_widget(form.ville,{'attr': {'class':'form-control'}})}}{{ form_errors(form.ville) }}<br>
+      {{ form_label(form.telephone) }} {{ form_widget(form.telephone,{'attr': {'class':'form-control'}})}}{{ form_errors(form.telephone) }}<br>
+   {{ form_label(form.compte) }} {{ form_widget(form.compte,{'attr': {'class':'form-control'}})}}{{ form_errors(form.compte) }}<br>
+   {{ form_label(form.matriculeVoiture) }} {{ form_widget(form.matriculeVoiture,{'attr': {'class':'form-control'}})}}{{ form_errors(form.matriculeVoiture)}}<br>
+   {{ form_label(form.modeleVoiture) }} {{ form_widget(form.modeleVoiture,{'attr': {'class':'form-control'}})}}{{ form_errors(form.modeleVoiture)}}<br>
+   {{ form_label(form.email) }} {{ form_widget(form.email,{'attr': {'class':'form-control'}})}}{{ form_errors(form.email) }}<br>
+   {{ form_label(form.current_password) }} {{ form_widget(form.current_password,{'attr': {'class':'form-control'}})}}{{ form_errors(form.current_password) }}<br>
+   
         <input type="submit" value="{{ 'profile.edit.submit'|trans }}" class="btn btn-info" />
+        {{form_rest(form)}}
+      </form>
+<br> <br><br> <br>
+         </div>
+       
     </div>
-</form>
+      <div class="col-lg-4 col-lg-push-1">
+      <img src="{{asset('bundles/ucovoiturage/images/usermodif.png')}}"  width="200" height="200">
+       </div>
     </div>
     </div>
-</div>

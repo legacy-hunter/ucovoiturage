@@ -1,0 +1,87 @@
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <div class="container">      
+        <br>
+        <div class="row">
+            
+        </div>
+        <div class="row">
+            <br> 
+
+            {% for flashMessage in app.session.flashbag.get('msg_resAnnule') %}
+                <div class="alert alert-success">
+                    {{ flashMessage }}
+                </div>
+            {% endfor %}
+            {% for flashMessage in app.session.flashbag.get('msg_resConfirme') %}
+                <div class="alert alert-success">
+                    {{ flashMessage }}
+                </div>
+            {% endfor %}
+            <div class="row" >        
+                <div class="panel panel-success">
+                    <div class="panel-heading"><CENTER><h4>Liste de Réservations reçues</h4></CENTER></div>
+                    <table class="table table-striped table-hover table-bordered table-condensed" border="0">   
+                        <tbody>
+
+                            {% for demandes in demandes_rec %}
+
+                                <tr>
+                                    <td>
+                                        <!--begine of table 1-->
+                                        <table class="table table-striped table-hover table-condensed">
+                                            <tbody>
+                                                <tr>
+                                                    <td width="100px" align="left" rowspan="0"><!---->
+                                                        <div class="media">
+                                                            <img class="media-object" src="{{asset('bundles/ucovoiturage/images/reservationup.png')}}"alt="Media Object" style="width:30px;height: 30px;">
+                                                        </div>    
+                                                    </td>
+                                                    <td><!--width="200px" height="25"-->
+                                              </td>
+                                              <td> <span style="color: #3b629d;"><strong >Envoyé par : </strong></span>&nbsp;<span style="color: #666;">{{demandes.utilisateurSend.nom}} &nbsp; {{demandes.utilisateurSend.prenom}}</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <span style="color: #3b629d;"><strong><span class="glyphicons glyphicon glyphicon-time"></span> Date de l'opération: </strong> </span><span style="color: #666;"> {{demandes.annonce.DateDepart|date('Y-m-d')}}</span>
+                                                    </td>
+
+                                                    <td>
+                                                        <strong align="center"> </strong>
+                                                        <span style="color: #3b629d;"><strong>message du sender : </strong></span> <span style="color: #666;">{{demandes.commentaire}}</span>
+                                                    </td>
+
+
+                                                </tr>
+                                            </tbody>  
+                                        </table>    
+                                    </td> 
+                                    <!--end of table 1-->
+
+                                    <!-- begine of table 2-->
+
+                                    <td>
+                                        <span style="color: #3b629d;"><strong> Lieu de depart : </strong></span>&nbsp <span style="color: #666;">{{demandes.annonce.lieuDepart}} </span><br><br>
+                                        <span style="color: #3b629d;"><strong> Lieu d'arrivé :</strong></span> &nbsp <span style="color: #666;">{{demandes.annonce.lieuArrive}}</span>
+                                        <p class="gros2"></p>
+
+                                    </td>
+
+                                    <td  align="center">
+                                        <span class="gros">
+                                            <a href='{{path('confirmer_res', { 'id' : demandes.id })}}'> <span class="glyphicons glyphicon glyphicon-ok">confirmer</span></a> <br><a href='{{path('annuler_res', { 'id' : demandes.id })}}'><span class="glyphicons glyphicon glyphicon-remove">annuler</span></a> <br>
+                                        </span>
+                                        </br>
+                                        <span style="color: #666;">etat : </span><span style="color: #ef792f;">{{demandes.etat}}</span>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+                        
+                {%endblock%}

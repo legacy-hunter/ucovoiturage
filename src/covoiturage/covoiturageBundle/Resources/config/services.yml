@@ -5,3 +5,10 @@ services:
      arguments: [@service_container,@session]
      tags:
         - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
+    
+    
+    my.handler.session_idle:
+        class:  covoiturage\covoiturageBundle\Listener\SessionIdleHandler
+        arguments: ["@session", "@security.context", "@router", %session_max_idle_time%]
+        tags:
+            - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }

@@ -17,11 +17,28 @@ class __TwigTemplate_0587e098ada49fbfd634a5f3ac90e77ea4468fc5ece3ecfde637f0ac285
     {
         // line 1
         echo "
-<!--<a href=\"";
-        // line 2
-        echo $this->env->getExtension('routing')->getPath("covoiturage_fos");
-        echo "\">test</a>-->
-hummm";
+<html>
+<head>
+\t<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"/>
+\t<meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge\"/>
+\t<title>Untitled</title>
+<!--Adobe Edge Runtime-->
+    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=Edge\">
+    <script type=\"text/javascript\" charset=\"utf-8\" src=\"";
+        // line 9
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/ucovoiturage/js/INS_edgePreload.js"), "html", null, true);
+        echo "\"></script>
+    <style>
+        .edgeLoad-EDGE-11035687 { visibility:hidden; }
+    </style>
+<!--Adobe Edge Runtime End-->
+
+</head>
+<body style=\"margin:0;padding:0;\">
+\t<div id=\"Stage\" class=\"EDGE-11035687\">
+\t</div>
+</body>
+</html";
     }
 
     public function getTemplateName()
@@ -36,6 +53,6 @@ hummm";
 
     public function getDebugInfo()
     {
-        return array (  22 => 2,  19 => 1,);
+        return array (  29 => 9,  19 => 1,);
     }
 }

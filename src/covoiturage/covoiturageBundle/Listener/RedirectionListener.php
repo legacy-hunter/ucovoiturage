@@ -19,10 +19,10 @@ class RedirectionListener
     {
         $route = $event->getRequest()->attributes->get('_route');
         
-        if ($route == 'liste_covoiturages') {
+        if ($route == 'liste_covoiturages'||$route=='liste_annonce'||$route=='covoiturage_annonce'||$route=='voir_res') {
         
             if (!is_object($this->securityContext->getToken()->getUser())) {
-                $this->session->getFlashBag()->add('notification','Vous devez vous identifier');
+                $this->session->getFlashBag()->add('notif','Vous devez vous identifier');
                 $event->setResponse(new RedirectResponse($this->router->generate('fos_user_security_login')));
             }
         }

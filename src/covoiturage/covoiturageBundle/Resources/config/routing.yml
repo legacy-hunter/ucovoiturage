@@ -64,9 +64,18 @@ envoi_res:
 voir_res:
     path: /voir_reservations
     defaults:  { _controller: covoiturageBundle:Annonce:voir_res}
+voir_resRec:
+    path: /voir_reservationsRec
+    defaults:  { _controller: covoiturageBundle:Annonce:voir_resRec}
+voir_resEnv:
+    path: /voir_reservationsEnv
+    defaults:  { _controller: covoiturageBundle:Annonce:voir_resEnv}
 confirmer_res:
     path: /confirmation/{id}
     defaults:  { _controller: covoiturageBundle:Annonce:confirmer_res}
 annuler_res:
     path: /annulation/{id}
     defaults:  { _controller: covoiturageBundle:Annonce:annuler_res}
+recherche_covoiturage:
+    path: /recherche
+    defaults:  { _controller: covoiturageBundle:Annonce:recherche_annonce}

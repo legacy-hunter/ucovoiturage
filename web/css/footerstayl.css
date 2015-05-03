@@ -1,0 +1,18 @@
+div.footer2{
+	background-color: #BDF4C4;
+    min-height: 60px;
+    transition:min-height .4s;
+    transition:background-color .50s;
+}
+
+.Degrade {
+
+	background-image:linear-gradient(green, black);
+}
+/*#BDF4C4*/
+
+div.footer2:hover{	
+	background-color: #03d669;
+	min-height:50px
+
+}

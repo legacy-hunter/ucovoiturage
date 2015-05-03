@@ -183,6 +183,8 @@ L\'équipe.
   'messages' => 
   array (
     'Symfony2 is great' => 'J\'aime Symfony2',
+    'Previous' => 'precedent',
+    'Next' => 'suivant',
   ),
 ));
 

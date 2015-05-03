@@ -37,21 +37,31 @@ class __TwigTemplate_0eaab0182cd692c2a30f6640193298f18f6e25c48eeed2782128ee45eec
     {
         // line 4
         echo "    <div id=\"container\">
-        <h3>Bienvenue sur votre profil</h3>
-        <br><br>
-        <div class=\"row\">
+        <br>
+        <div class=\"row\" style=\"width: 1200px;\">
+            <div class=\"col-lg-4 col-lg-push-1 \">
             ";
         // line 8
         $this->env->loadTemplate("::menu_profil.html.twig")->display($context);
         // line 9
-        echo "            <div class=\" col-lg-8\">   
+        echo "            </div>
+           
+            <div class=\" col-lg-3 col-lg-push-1\">   
                 <p> <h4>Vos Informations :</h4></p>
                  
                 ";
-        // line 12
+        // line 14
         $this->env->loadTemplate("FOSUserBundle:Profile:show_content.html.twig")->display($context);
         echo " 
+                
             </div>
+                
+                <div class=\" col-lg-5 col-lg-push-2\" style=\"width:200px;\"> 
+                     <img src=\"";
+        // line 19
+        echo twig_escape_filter($this->env, $this->env->getExtension('assets')->getAssetUrl("bundles/ucovoiturage/images/user.png"), "html", null, true);
+        echo "\"  width=\"200\" height=\"200\">
+                    </div>
         </div>
     </div>
 ";
@@ -69,6 +79,6 @@ class __TwigTemplate_0eaab0182cd692c2a30f6640193298f18f6e25c48eeed2782128ee45eec
 
     public function getDebugInfo()
     {
-        return array (  52 => 12,  47 => 9,  45 => 8,  39 => 4,  36 => 3,  11 => 1,);
+        return array (  62 => 19,  54 => 14,  47 => 9,  45 => 8,  39 => 4,  36 => 3,  11 => 1,);
     }
 }

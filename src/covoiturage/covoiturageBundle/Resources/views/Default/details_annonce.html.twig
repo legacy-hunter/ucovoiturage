@@ -3,33 +3,99 @@
 {% extends '::base.html.twig' %}
 
 {% block body %}
+    <div class="container"> 
+        <div class="panel panel-info">
 
-<h4>Details de l'opération</h4>
-<p>Article publié par {{user.nom}} {{user.prenom}}</p> <br>
-<p>Date de l'opération : {{annonce.dateDepart | date('Y-m-d')}}</p><br>
-<p>Prix de l'opération :  {{annonce.prix}}</p><br>
-Quelques précisons de l'auteur : <br>
-<p>{{annonce.precisions}}</p>
-<form action ="{{path('envoi_res',{'id' : annonce.id })}}" method="POST">
-    <label for="comment">Commentaire : </label><br>
-    <textarea id="comment" name="comment"></textarea><br>
-    <input type='submit' value='Effectuer reservation'/>
-</form>
-    <br>Envoyer un message ...<br>
-<form action='{{path('send_message',{ 'id' : annonce.id })}}' method='POST' class="form-group">
-    <label for='sender'>Votre email : </label><br>
-        <input type='text' id='sender_mail' name='sender_mail'/><br>
-        <label for='objet'>objet : </label><br>
-        <input type='text' id='object' name='objet'><br>
-        <label for='message'>Votre message : </label><br>
-        <textarea id='message' rows='8' cols='45' name="message"></textarea><br>
-        <input type='submit' value='Envoyer message'/>
-</form>
+            <div class="panel-heading">
+                <CENTER><h4>Details de l'opération</h4></CENTER>
+            </div>	
 
-            {% for flashMessage in app.session.flashbag.get('success') %}
-                <div class="alert alert-success">
-                    {{ flashMessage }}
-                </div>
-            {% endfor %}
+            <table class = "table table-striped table-hover table-bordered table-condensed">
+                <tr>	
+                    <th> </th>
 
+                    <th> </th>
+
+
+                </tr>
+
+                <tr >
+                    <td><p>Article publié par : </p></td>
+
+                    <td><p>{{user.nom}} {{user.prenom}}</p> </td>
+
+
+                </tr>
+                <tr>
+                    <td> <p>Date de l'opération : </p></td>
+
+                    <td><p>{{annonce.dateDepart | date('Y-m-d')}}</p></td>
+
+
+                </tr>
+                <tr>
+                    <td><p>Prix de l'opération : </p></td>
+
+                    <td><p> {{annonce.prix}}</p></td>
+                </tr>
+                {%if annonce.precisions is defined%}
+                <tr>
+                    <td>Quelques précisons de l'auteur :</td>
+
+                    <td><p>{{annonce.precisions}}</p></td>
+
+                </tr>
+                {%endif%}
+                
+                {%if etapes is defined %}
+                    {% set i=0%}
+                    {% for etape in etapes%}
+                        {% set i = i + 1 %}
+                    <tr>
+                        <td> etape {{i}} :</td>
+                        <td>{{etape.ville}}<td>
+                    </tr>
+                    {%endfor%}
+                    {%endif%}
+            </table>   
+        </div>
+        <center>
+            
+                <div class="panel panel-primary">
+
+                    <div class="panel-heading">
+                        <CENTER><h4>Details de l'opération</h4></CENTER>
+                    </div>  
+
+                    <form action ="{{path('envoi_res',{'id' : annonce.id })}}" method="POST">
+
+
+                        <table class = "table table-striped table-hover table-bordered table-condensed">
+                            <tr>	
+                                <td><label for="comment">Commentaire : </label></td>
+
+                                <td><textarea id="comment" name="comment"></textarea><br> </td>
+                            </tr>
+                            <tr>    
+                                <td> </td>
+                                <td> <input type='submit' class="btn btn-primary .btn-lg" value='Effectuer reservation'/> </td>
+                            </tr> 
+
+                        </table>        
+
+                    </form>
+                </div> 
+                    
+        </center> 
+
+
+        <br>
+
+
+        {% for flashMessage in app.session.flashbag.get('success') %}
+            <div class="alert alert-success">
+                {{ flashMessage }}
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}

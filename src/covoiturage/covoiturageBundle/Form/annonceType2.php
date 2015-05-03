@@ -15,10 +15,9 @@ class annonceType2 extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('lieuDepart',null,array('label'=>'Votre lieu de depart : ','attr' => array('style' => 'width: 400px')))
-            ->add('lieuArrive',null,array('label'=>'Lieu de Destination : ','attr' => array('style' => 'width: 400px')))
-            ->add('dateDepart','datetime',array('label'=>'Date de depart : ','widget'=>'single_text','attr' => array('style' => 'width: 362px')))
-            ->add('precisions','textarea',array('label'=>'vos exigences pour le voyage : ','attr' => array('style' => 'width: 400px')))
+            
+            ->add('dateDepart','datetime',array('label'=>'Date de depart : ','widget'=>'single_text','attr' => array('style' => 'width: 260px','required'=>'true')))
+            ->add('precisions','textarea',array('label'=>'vos exigences pour le voyage : ','attr' => array('style' => 'width: 300px','required'=>'true')))
         ;   
     }
     

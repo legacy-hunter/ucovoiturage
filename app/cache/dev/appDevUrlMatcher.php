@@ -494,9 +494,22 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'envoi_res')), array (  '_controller' => 'covoiturage\\covoiturageBundle\\Controller\\AnnonceController::envoi_resAction',));
         }
 
-        // voir_res
-        if ($pathinfo === '/voir_reservations') {
-            return array (  '_controller' => 'covoiturage\\covoiturageBundle\\Controller\\AnnonceController::voir_resAction',  '_route' => 'voir_res',);
+        if (0 === strpos($pathinfo, '/voir_reservations')) {
+            // voir_res
+            if ($pathinfo === '/voir_reservations') {
+                return array (  '_controller' => 'covoiturage\\covoiturageBundle\\Controller\\AnnonceController::voir_resAction',  '_route' => 'voir_res',);
+            }
+
+            // voir_resRec
+            if ($pathinfo === '/voir_reservationsRec') {
+                return array (  '_controller' => 'covoiturage\\covoiturageBundle\\Controller\\AnnonceController::voir_resRecAction',  '_route' => 'voir_resRec',);
+            }
+
+            // voir_resEnv
+            if ($pathinfo === '/voir_reservationsEnv') {
+                return array (  '_controller' => 'covoiturage\\covoiturageBundle\\Controller\\AnnonceController::voir_resEnvAction',  '_route' => 'voir_resEnv',);
+            }
+
         }
 
         // confirmer_res
@@ -507,6 +520,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
         // annuler_res
         if (0 === strpos($pathinfo, '/annulation') && preg_match('#^/annulation/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'annuler_res')), array (  '_controller' => 'covoiturage\\covoiturageBundle\\Controller\\AnnonceController::annuler_resAction',));
+        }
+
+        // recherche_covoiturage
+        if ($pathinfo === '/recherche') {
+            return array (  '_controller' => 'covoiturage\\covoiturageBundle\\Controller\\AnnonceController::recherche_annonceAction',  '_route' => 'recherche_covoiturage',);
         }
 
         throw 0 < count($allow) ? new MethodNotAllowedException(array_unique($allow)) : new ResourceNotFoundException();

@@ -3,23 +3,30 @@
 {% trans_default_domain 'FOSUserBundle' %}
 
 {% block fos_user_content %}
+    <div class="container">
 <div class="row">
 <div class="col-lg-4">
-    <div class="row">
-        <div class="col-lg-4">      
-        
-        </div>
-    </div>
+   
 </div>
-     <div class="col-lg-8">
-      <h2>Connexion</h2>
+    <div class="col-lg-8" style="height: 100px; width: 100px;">
+      
+      
+       {% for type, messages in app.session.flashbag.get('notif') %}
+            {% for message in messages %}
+                <div class="flash-{{ type }}">
+                    <strong style="color: blue;"> {{ message }} </strong>
+                </div>
+            {% endfor %}
+        {% endfor %}
       </div>
 </div>
 <div class="row">
-    <div class="col-lg-9">
-   
+    <div class="col-lg-8 col-md-push-2" style="width: 500px;">
+               
+    <img src="{{ asset('bundles/ucovoiturage/images/image_login.jpeg')}}"  width="200" height="200">
+           
 </div>
-<div class="col-lg-3 col">
+<div class="col-lg-3 col col-md-push-3">
 <div class="form-group">
 <form action="{{ path("fos_user_security_check") }}" method="post" class="form-group-lg">
      
@@ -53,6 +60,7 @@
    </div> 
      
 </div>
-    
+   
 </div>
+    </div>
 {% endblock fos_user_content %}

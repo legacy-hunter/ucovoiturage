@@ -34,22 +34,12 @@
         </head>
         <body>
             <div class="container">
-                <div class="row">
-                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                        {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
-                        <a href="{{ path('fos_user_security_logout') }}">
-                            {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
-                        </a>
-                    {% else %}
-                        <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
-                    {% endif %}
-                </div>
-                <div class="row">
-
+                
+                
                     <div class="row">
-                        <br> 
+                        <br><br>
                         {% include '::menu_profil.html.twig'%} 
-                        <div class="col-lg-6">
+                        <div class="col-lg-4">
                             <div class="form-group">
                                 <form  method="POST" class="" action="{{path('valider_modif_profil')}}">
                                     <label for="choix">choisir role :</label><br>
@@ -59,9 +49,9 @@
                                         <option value="all">passager & conducteur</option>
                                     </select><br><br>  
                                     <label for="numCompte" id="label_numCompte">numero de compte : </label>
-                                    <input id="numCompte" name="numCompte" type="text" class="form-control"/> 
+                                    <input id="numCompte" name="numCompte" type="text" class="form-control" style="width: 400px;"/> 
                                     <label for="numPermis" id="label_numPermis">numero du permis :</label>
-                                    <input id="numPermis" name="numPermis" type="text" class="form-control"/> 
+                                    <input id="numPermis" name="numPermis" type="text" class="form-control" style="width: 400px;"/> 
                                     <br>
                                     <input type ="submit" value= "valider"/>
                                 </form>
@@ -70,7 +60,7 @@
 
                         </div>
                     </div>
-                </div>
+                
 
         </body>
     </html>

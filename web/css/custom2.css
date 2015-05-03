@@ -3,7 +3,7 @@
 }
 #custom-bootstrap-menu.navbar-default {
     font-size: 15px;
-    background-color: rgba(3, 214, 105, 1);
+    background-color: rgba(5, 5, 5, 5);
     border-width: 1px;
     border-radius: 4px;
 }
@@ -34,7 +34,7 @@
 }
 #custom-bootstrap-menu.navbar-default .navbar-toggle:hover .icon-bar,
 #custom-bootstrap-menu.navbar-default .navbar-toggle:focus .icon-bar {
-    background-color: #03d669;
+    background-color: #03ad66;
 }
 
 
@@ -82,20 +82,7 @@ section{
     background-color: #03d669;
 }
 
-@import url(http://fonts.googleapis.com/css?family=Lato:300,400,700);
-h1, h2, h3, h4 {
-    font-family: 'Lato', sans-serif;
-    font-weight: 300;
-}
-p {
-    font-family: 'Lato', sans-serif;
-}
-html {
-    background-color: #474747;
-}
-.top {
-    background-color: #474747;
-}
+
 .top .navbar-brand {
     height: 50px;
     line-height: 50px;
@@ -113,13 +100,13 @@ html {
 }
 .banner .container2 {
     background-color: #009b9b;
-    min-height: 200px;
+    min-height: 100px;
     padding: 40px 30px 30px 40px;
 }
 .banner .container2 p {
     font-size: 22px;
     padding-left: 5px;
-    font-weight: 300;
+    font-weight: 100;
 }
 .middle {
     background-color: #CCC;
@@ -141,7 +128,7 @@ html {
 }
 .bottom .container2 {
     background-color: #BDF4C4;
-    min-height: 150px;
+    min-height: 100px;
 }
 .bottom .container2 h3 {
     color: #999;

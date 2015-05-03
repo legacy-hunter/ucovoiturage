@@ -22,31 +22,33 @@ class __TwigTemplate_ad943f2877e843829457e297df648f07cbe5f0b5d5e7e6e1c153b2f5018
 <div class=\"col-lg-4 col-md-push-1\">
     <aside>
                 <ul  class=\"nav nav-pills nav-stacked \">
-                    
                     <li class=\"active\" role=\"presentation\"><a href=\"";
-        // line 8
+        // line 7
         echo $this->env->getExtension('routing')->getPath("covoiturage_annonce");
         echo "\">Creer une Annonce</a></li>
                     <li><a href=\"";
-        // line 9
+        // line 8
         echo $this->env->getExtension('routing')->getPath("liste_annonce");
         echo "\">Gerer Mes Annonces</a></li>
-                    <li><a>Effectuer un payement</a></li>
                     <li><a href=\"";
-        // line 11
+        // line 9
         echo $this->env->getExtension('routing')->getPath("modif_profil");
         echo "\">Modifier le role</a></li>
                     <li><a href=\"";
-        // line 12
-        echo $this->env->getExtension('routing')->getPath("voir_res");
-        echo "\">Mes réservations</a></li>
+        // line 10
+        echo $this->env->getExtension('routing')->getPath("voir_resEnv");
+        echo "\">Mes réservations envoyées</a></li>
                     <li><a href=\"";
-        // line 13
+        // line 11
+        echo $this->env->getExtension('routing')->getPath("voir_resRec");
+        echo "\">Mes réservations Reçues</a></li>
+                    <li><a href=\"";
+        // line 12
         echo $this->env->getExtension('routing')->getPath("fos_user_profile_edit");
         echo "\">Modifier mes informations</a></li>   
-                    <li><a>Envoyer un message</a></li>
+                    
                     <li><a href=\"";
-        // line 15
+        // line 14
         echo $this->env->getExtension('routing')->getPath("fos_user_security_logout");
         echo "\">Deconnectez vous</a></li>
                 </ul>
@@ -67,6 +69,6 @@ class __TwigTemplate_ad943f2877e843829457e297df648f07cbe5f0b5d5e7e6e1c153b2f5018
 
     public function getDebugInfo()
     {
-        return array (  50 => 15,  45 => 13,  41 => 12,  37 => 11,  32 => 9,  28 => 8,  19 => 1,);
+        return array (  52 => 14,  47 => 12,  43 => 11,  39 => 10,  35 => 9,  31 => 8,  27 => 7,  19 => 1,);
     }
 }

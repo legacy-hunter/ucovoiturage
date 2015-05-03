@@ -12,4 +12,11 @@ use Doctrine\ORM\EntityRepository;
  */
 class reservationRepository extends EntityRepository
 {
+    
+     public function getReservSend($userID){
+        $qd = $this->createQueryBuilder('a')
+                ->select('a')
+                ->where('a.utilisateur_send_id = :userID')
+                ->orderBy('a.');
+     }
 }

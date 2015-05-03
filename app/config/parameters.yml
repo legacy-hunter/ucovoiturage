@@ -12,7 +12,8 @@ parameters:
     mailer_password: overload@Hunter1989
     mailer_encryption: ssl
     locale: fr
-    secret: ThisTokenIsNotSoSecretChangeIt
     debug_toolbar: true
     debug_redirects: false
     use_assetic_controller: true
+    secret: ThisTokenIsNotSoSecretChangeIt
+    session_max_idle_time : 3600

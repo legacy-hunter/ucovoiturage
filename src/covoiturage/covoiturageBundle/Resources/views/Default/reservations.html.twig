@@ -1,18 +1,155 @@
 {# empty Twig template #}
-{% for flashMessage in app.session.flashbag.get('success') %}
+
+{% extends '::base.html.twig' %}
+
+{% block body %}
+    <div class="container">      
+        <br>
+        <div class="row">
+
+        </div>
+        <div class="row">
+            <br> 
+
+            {% for flashMessage in app.session.flashbag.get('msg_res') %}
                 <div class="alert alert-success">
                     {{ flashMessage }}
                 </div>
             {% endfor %}
-            <h3>Demandes reçues </h3>
-{% for demandes in demandes_rec %}
-     {{demandes.utilisateurSend.nom}} &nbsp; {{demandes.utilisateurSend.prenom}} 
-     vous a envoyé une réservation pour votre annonce du : {{demandes.annonce.DateDepart|date('Y-m-d')}} <a href='{{path('confirmer_res', { 'id' : demandes.id })}}'>confirmer</a> <a href='{{path('annuler_res', { 'id' : demandes.id })}}'>annuler</a>
-{% endfor %}
-<h3>Demandes envoyees : </h3>
-{% for demandes in demandes_env %}
-     {{demandes.utilisateurSend.nom}} &nbsp; {{demandes.utilisateurSend.prenom}} 
-     vous a envoyé une réservation pour votre annonce du : {{demandes.annonce.DateDepart|date('Y-m-d')}} <a href='{{path('confirmer_res', { 'id' : demandes.id })}}'>confirmer</a> <a href='{{path('annuler_res', { 'id' : demandes.id })}}'>annuler</a>
-     
-     {{demandes.etat}}
-{% endfor %}
+            <div class="row" >        
+                <div class="panel panel-success">
+                    <div class="panel-heading"><CENTER><h4>Liste de covoiturage Reçues</h4></CENTER></div>
+                    <table class="table table-striped table-hover table-bordered table-condensed" border=="0">   
+                        <tbody>
+
+                            {% for demandes in demandes_rec %}
+
+                                <tr>
+                                    <td>
+                                        <!--begine of table 1-->
+                                        <table class="table table-striped table-hover table-condensed">
+                                            <tbody>
+                                                <tr>
+                                                    <td width="100px" align="left" rowspan="0"><!---->
+                                                        <div class="media">
+                                                            <img class="media-object" src="{{asset('bundles/ucovoiturage/images/reservatiodown.png')}}"alt="Media Object" style="width: 50px; height: 50px;">
+                                                        </div>    
+                                                    </td>
+                                                    <td><!--width="200px" height="25"-->
+
+                                                    </td>
+                                                    <td> <strong>Nom et prenom: </strong>&nbsp;{{demandes.utilisateurSend.nom}} &nbsp; {{demandes.utilisateurSend.prenom}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        <strong>Date de l'opération: {{demandes.annonce.DateDepart|date('Y-m-d')}}</strong>
+                                                    </td>
+
+                                                    <td>
+                                                        <strong align="center"> </strong>
+                                                        <strong>message du sender : </strong> {{demandes.commentaire}}
+                                                    </td>
+
+
+                                                </tr>
+                                            </tbody>  
+                                        </table>    
+                                    </td> 
+                                    <!--end of table 1-->
+
+                                    <!-- begine of table 2-->
+
+                                    <td>
+                                        <strong> Lieu de depart : </strong>&nbsp {{demandes.annonce.lieuDepart}} <br><br>
+                                        <strong> Lieu d'arrivé :</strong> &nbsp {{demandes.annonce.lieuArrive}}
+                                        <p class="gros2"></p>
+
+                                    </td>
+
+                                    <td  align="center">
+                                        <span class="gros">
+                                            <a href='{{path('confirmer_res', { 'id' : demandes.id })}}'>confirmer</a> <br><a href='{{path('annuler_res', { 'id' : demandes.id })}}'>annuler</a> <br>
+                                        </span>
+                                        </br>
+                                        etat : {{demandes.etat}}
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+
+                    <br><br>
+
+                    <div class="panel panel-success">
+                        <div class="panel-heading"><CENTER><h4>Liste de covoiturage Envoyées</h4></CENTER></div>
+                        <table class="table table-striped table-hover table-bordered table-condensed" border=="0">   
+                            <tbody>
+
+                                {% for demandes in demandes_env %}
+
+                                    <tr>
+                                        <td>
+                                            <!--begine of table 1-->
+                                            <table class="table table-striped table-hover table-condensed">
+                                                <tbody>
+                                                    <tr>
+                                                        <td width="100px" align="left" rowspan="0"><!---->
+                                                            <div class="media">
+                  <img class="media-object" src="{{asset('bundles/ucovoiturage/images/reservationup.png')}}"alt="Media Object" style="width: 50px; height: 50px;">
+                                                            </div>    
+                                                        </td>
+                                                        <td><!--width="200px" height="25"-->
+
+                                                        </td>
+                                                        <td> <strong>Nom et prenom: </strong>&nbsp;{{demandes.utilisateurSend.nom}} &nbsp; {{demandes.utilisateurSend.prenom}}</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>
+                                                            <strong>Date de l'opération: {{demandes.annonce.DateDepart|date('Y-m-d')}}</strong>
+                                                        </td>
+
+                                                        <td>
+                                                            <strong align="center"> </strong>
+                                                            <strong>message du sender : </strong>
+                                                        </td>
+
+
+                                                    </tr>
+                                                </tbody>  
+                                            </table>    
+                                        </td> 
+                                        <!--end of table 1-->
+
+                                        <!-- begine of table 2-->
+
+                                        <td>
+                                            <strong> Lieu de depart : </strong>&nbsp {{demandes.annonce.lieuDepart}} <br><br>
+                                            <strong> Lieu d'arrivé :</strong> &nbsp {{demandes.annonce.lieuArrive}}
+                                            <p class="gros2"></p>
+
+                                        </td>
+
+                                        <td  align="center">
+                                            <span class="gros">
+                                                 <br><a href='{{path('annuler_res', { 'id' : demandes.id })}}'>annuler</a> <br>
+                                            </span>
+                                            </br>
+                                            etat : {{demandes.etat}}
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+
+                    </div>
+                </div>
+            </div>      
+        </div>
+
+    </div> 
+</div>
+<br>
+
+
+</div>
+{%endblock%}

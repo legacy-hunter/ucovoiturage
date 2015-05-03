@@ -20,4 +20,33 @@ class annonceRepository extends EntityRepository
                 
         return $qb->getQuery()->getResult();
     }
+    
+    public function recherche($villeDep,$villeArr,$DateArr){
+        $now = new \DateTime();
+        $now->format('Y-m-d H:i:s');
+        $qb = $this->createQueryBuilder('a')
+                ->select('a')
+                ->where('a.dateDepart like :DateArr')
+                ->orWhere('a.lieuDepart = :villeDep')
+                ->orWhere('a.lieuArrive = :villeArr')
+                ->andwhere('a.nbPlace > 0')
+                ->andWhere('a.dateDepart >= :date')
+                ->orderBy('a.id')
+                ->setParameter('DateArr', $DateArr.' %%%%%%%%')
+                ->setParameter('villeDep', $villeDep)
+                ->setParameter('villeArr', $villeArr)
+                ->setParameter('date',$now);
+        return $qb->getQuery()->getResult();             
+    }
+    
+    public function allAnnonces(){
+        $now = new \DateTime();
+        $now->format('Y-m-d H:i:s');
+        $qb = $this->createQueryBuilder('a')
+                ->select('a')
+                ->where('a.nbPlace > 0')
+                ->andWhere('a.dateDepart >= :date')
+                ->setParameter('date',$now);
+        return $qb->getQuery()->getResult();
+    }
 }

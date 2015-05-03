@@ -22,9 +22,9 @@ class voiture
     private $id;
 
     /**
-     * @var integer
+     * @var string
      *
-     * @ORM\Column(name="matricule", type="integer")
+     * @ORM\Column(name="matricule", type="string",nullable=true)
      */
     
     private $matricule;
@@ -39,14 +39,14 @@ class voiture
     /**
      * @var string
      *
-     * @ORM\Column(name="modele", type="string", length=255)
+     * @ORM\Column(name="modele", type="string", length=255,nullable=true)
      */
     private $modele;
 
     /**
      * @var integer
      *
-     * @ORM\Column(name="nb_place", type="integer")
+     * @ORM\Column(name="nb_place", type="integer",nullable=true)
      */
     private $nbPlace;
 
